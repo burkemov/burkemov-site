@@ -15,3 +15,6 @@
 # Logs / temp
 *.log
 node_modules/
+
+# Python (script de OG image)
+venv/

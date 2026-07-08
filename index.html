@@ -2,353 +2,297 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ============================================================
-       SEO — [SUBSTITUIR: ajustar textos e URL final do domínio]
-       ============================================================ -->
   <title>burke.mov — Vídeos que transformam atenção em clientes</title>
-  <meta name="description" content="Editor de vídeo e motion designer para clínicas, podcasts e negócios que querem mais clientes. Edição com storytelling e performance. Fale no WhatsApp." />
-  <meta name="author" content="@burke_mov" />
+  <meta name="description" content="Edição de vídeo e motion design para clínicas, empresas, podcasts e anúncios. +5 milhões de views gerados, 17 clientes no Brasil e nos EUA, entrega média em 24h. Fale no WhatsApp." />
+  <meta name="theme-color" content="#000000" />
   <link rel="canonical" href="https://burkemov.com/" />
 
-  <!-- Open Graph — preview bonito ao compartilhar em WhatsApp/DM -->
+  <!-- Open Graph — preview ao compartilhar em WhatsApp / DM / e-mail -->
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="burke.mov" />
-  <meta property="og:title" content="Vídeos que transformam atenção em clientes" />
-  <meta property="og:description" content="Editor de vídeo e motion designer para clínicas, podcasts e negócios locais. Do briefing ao resultado." />
   <meta property="og:url" content="https://burkemov.com/" />
+  <meta property="og:site_name" content="burke.mov" />
+  <meta property="og:title" content="burke.mov — Vídeos que transformam atenção em clientes" />
+  <meta property="og:description" content="Edição de vídeo e motion design para clínicas, empresas, podcasts e anúncios. +5M de views gerados · 17 clientes · entrega média em 24h." />
   <meta property="og:image" content="https://burkemov.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="pt_BR" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="burke.mov — Vídeos que transformam atenção em clientes" />
-  <meta name="twitter:description" content="Editor de vídeo e motion designer. Do briefing ao resultado." />
+  <meta name="twitter:description" content="Edição de vídeo e motion design. +5M de views gerados · 17 clientes · entrega média em 24h." />
   <meta name="twitter:image" content="https://burkemov.com/assets/og-image.jpg" />
 
-  <!-- Ícones — [SUBSTITUIR: adicionar favicon.svg / apple-touch-icon.png em /assets] -->
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
-  <!-- Fontes: SF Pro via -apple-system, fallback Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Vídeos só carregam ao abrir o modal; preconnect deixa esse clique instantâneo -->
+  <link rel="preconnect" href="https://player.vimeo.com" />
+  <link rel="preconnect" href="https://i.vimeocdn.com" />
 
-  <link rel="stylesheet" href="css/styles.css" />
-
-  <!-- Schema.org — ajuda em SEO local -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "burke.mov",
-    "description": "Edição de vídeo e motion design para clínicas, podcasts e negócios.",
-    "areaServed": "BR",
+    "description": "Edição de vídeo e motion design para clínicas, empresas, podcasts e anúncios Meta.",
     "url": "https://burkemov.com/",
+    "founder": { "@type": "Person", "name": "Davi Burke" },
+    "areaServed": ["BR", "US"],
     "sameAs": [
-      "https://instagram.com/burke_mov"
+      "https://instagram.com/burke_mov",
+      "https://www.behance.net/editordaviburke",
+      "https://www.linkedin.com/in/davi-burke"
     ]
   }
   </script>
-</head>
 
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 <body>
-  <!-- Fundo com gradientes radiais (profundidade sem linhas retas) -->
-  <div class="bg-ambient" aria-hidden="true">
-    <div class="bg-glow bg-glow--1"></div>
-    <div class="bg-glow bg-glow--2"></div>
-    <div class="bg-glow bg-glow--3"></div>
+
+  <!-- Luz de fundo (orbes) — decorativo -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__orb bg__orb--1"></div>
+    <div class="bg__orb bg__orb--2"></div>
+    <div class="bg__orb bg__orb--3"></div>
   </div>
 
-  <!-- ============================================================
-       NAV
-       ============================================================ -->
+  <!-- ============ NAV ============ -->
   <header class="nav" id="nav">
-    <div class="nav__inner container">
-      <a href="#hero" class="nav__brand" aria-label="burke.mov — início">
-        <span class="nav__logo">burke<span class="nav__dot">.</span>mov</span>
-      </a>
-
-      <nav class="nav__links" aria-label="Navegação principal">
-        <a href="#trabalhos" class="nav__link">Trabalhos</a>
-        <a href="#processo" class="nav__link">Processo</a>
-        <a href="#diferenciais" class="nav__link">Diferenciais</a>
-        <a href="#faq" class="nav__link">Dúvidas</a>
-      </nav>
-
-      <a href="#" class="btn btn--nav js-whatsapp" data-wa-context="nav">
-        <svg class="btn__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
+    <nav class="nav__pill" aria-label="Navegação principal">
+      <a href="#inicio" class="nav__brand">burke<span>.mov</span></a>
+      <div class="nav__links">
+        <a href="#trabalhos">Trabalhos</a>
+        <a href="#processo">Processo</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#" class="btn btn--sm btn--wa js-whatsapp" data-wa-context="nav">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4 0-.6.2-.8l.4-.5c.1-.2.1-.3.2-.5v-.5c0-.1-.5-1.4-.7-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
         <span>WhatsApp</span>
       </a>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
-    </div>
+    </nav>
   </header>
 
   <main>
-    <!-- ============================================================
-         HERO
-         ============================================================ -->
-    <section class="hero" id="hero">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
       <div class="container hero__inner">
-        <p class="hero__eyebrow reveal">Editor de vídeo &amp; motion designer</p>
-        <h1 class="hero__title reveal" style="--delay:.05s">
-          Vídeos que transformam<br />
-          <span class="hero__title-accent">atenção em clientes.</span>
-        </h1>
-        <p class="hero__subtitle reveal" style="--delay:.12s">
-          Edição com storytelling e performance para clínicas, podcasts e negócios
-          que querem parecer — e vender — como referência no seu mercado.
+        <p class="hero__eyebrow reveal">@burke_mov · edição de vídeo &amp; motion design</p>
+        <h1 class="hero__title reveal">Vídeos que transformam atenção em clientes.</h1>
+        <p class="hero__sub reveal">
+          Edição profissional para clínicas, empresas, podcasts e anúncios —
+          com storytelling que segura o público e chamadas que convertem.
+          Do briefing à entrega em média <strong>24&nbsp;horas</strong>.
         </p>
-        <div class="hero__actions reveal" style="--delay:.18s">
+        <div class="hero__actions reveal">
           <a href="#" class="btn btn--primary btn--lg js-whatsapp" data-wa-context="hero">
-            <svg class="btn__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
-            Falar no WhatsApp
-          </a>
-          <a href="#trabalhos" class="btn btn--ghost btn--lg">Ver trabalhos</a>
-        </div>
-
-        <div class="hero__scroll reveal" style="--delay:.3s" aria-hidden="true">
-          <span>Role para ver</span>
-          <span class="hero__scroll-line"></span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         PROVA SOCIAL / MÉTRICAS
-         ============================================================ -->
-    <section class="metrics" aria-label="Resultados">
-      <div class="container">
-        <div class="metrics__grid glass">
-          <div class="metric reveal">
-            <span class="metric__value" data-count="10" data-suffix="M+">0</span>
-            <span class="metric__label">Visualizações geradas<br /><small>somando os trabalhos entregues</small></span>
-          </div>
-          <div class="metric reveal" style="--delay:.06s">
-            <span class="metric__value" data-count="30" data-suffix="+">0</span>
-            <span class="metric__label">Clientes atendidos<br /><small>marcas, criadores e empresas</small></span>
-          </div>
-          <div class="metric reveal" style="--delay:.12s">
-            <span class="metric__value" data-count="3" data-suffix="">0</span>
-            <span class="metric__label">Nichos dominados<br /><small>corporativo · ads · gaming</small></span>
-          </div>
-          <div class="metric reveal" style="--delay:.18s">
-            <span class="metric__value" data-count="48" data-suffix="h">0</span>
-            <span class="metric__label">Entrega média<br /><small>ritmo de redes e campanhas</small></span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ============================================================
-         PORTFOLIO
-         ============================================================ -->
-    <section class="portfolio section" id="trabalhos">
-      <div class="container">
-        <div class="section__head reveal">
-          <p class="section__eyebrow">Trabalhos em destaque</p>
-          <h2 class="section__title">O produto sendo vendido<br />são os próprios vídeos.</h2>
-          <p class="section__lead">Selecione um nicho e veja como cada peça foi pensada para gerar resultado.</p>
-        </div>
-
-        <div class="filters reveal" style="--delay:.05s" role="tablist" aria-label="Filtrar por nicho">
-          <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-          <button class="filter" data-filter="ads" role="tab" aria-selected="false">Ads Meta</button>
-          <button class="filter" data-filter="corporativo" role="tab" aria-selected="false">Corporativo</button>
-          <button class="filter" data-filter="gaming" role="tab" aria-selected="false">Gaming</button>
-        </div>
-
-        <!-- Grid preenchido dinamicamente via js/main.js (PROJECTS) -->
-        <div class="portfolio__grid" id="portfolioGrid"></div>
-
-        <div class="portfolio__cta reveal">
-          <p>Quer ver um trabalho parecido com o seu segmento?</p>
-          <a href="#" class="btn btn--primary js-whatsapp" data-wa-context="portfolio">
-            <svg class="btn__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
-            Pedir um exemplo do meu nicho
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         PROCESSO
-         ============================================================ -->
-    <section class="process section" id="processo">
-      <div class="container">
-        <div class="section__head reveal">
-          <p class="section__eyebrow">Como funciona</p>
-          <h2 class="section__title">Simples para você.<br />Obsessivo nos detalhes.</h2>
-          <p class="section__lead">Você não precisa entender de edição. Precisa de resultado — e de um processo sem dor de cabeça.</p>
-        </div>
-
-        <div class="steps">
-          <article class="step glass reveal">
-            <span class="step__num">01</span>
-            <h3 class="step__title">Briefing</h3>
-            <p class="step__text">Uma conversa rápida no WhatsApp para entender seu objetivo, público e referências. Sem formulário chato.</p>
-          </article>
-          <article class="step glass reveal" style="--delay:.06s">
-            <span class="step__num">02</span>
-            <h3 class="step__title">Produção</h3>
-            <p class="step__text">Eu cuido de tudo: cortes, ritmo, legendas, motion e trilha. Você acompanha por prévias, sem retrabalho.</p>
-          </article>
-          <article class="step glass reveal" style="--delay:.12s">
-            <span class="step__num">03</span>
-            <h3 class="step__title">Entrega</h3>
-            <p class="step__text">Vídeo pronto no formato certo para cada canal (Reels, YouTube, anúncio). Ajustes inclusos.</p>
-          </article>
-          <article class="step glass reveal" style="--delay:.18s">
-            <span class="step__num">04</span>
-            <h3 class="step__title">Resultado</h3>
-            <p class="step__text">Conteúdo que prende atenção, gera autoridade e vira cliente. Acompanhamos os números juntos.</p>
-          </article>
-        </div>
-
-        <div class="process__cta reveal">
-          <a href="#" class="btn btn--primary btn--lg js-whatsapp" data-wa-context="processo">
-            <svg class="btn__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4 0-.6.2-.8l.4-.5c.1-.2.1-.3.2-.5v-.5c0-.1-.5-1.4-.7-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
             Começar meu projeto
           </a>
+          <a href="#trabalhos" class="btn btn--glass btn--lg">Ver trabalhos</a>
+        </div>
+        <p class="hero__proof reveal">
+          <span class="hero__dot" aria-hidden="true"></span>
+          +5 milhões de views geradas para 17 clientes no Brasil e nos EUA
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PROVA SOCIAL ============ -->
+    <section class="proof" id="resultados">
+      <div class="container">
+        <div class="proof__grid">
+          <div class="stat glass reveal">
+            <span class="stat__value">+5M</span>
+            <span class="stat__label">de views geradas nos conteúdos editados</span>
+          </div>
+          <div class="stat glass reveal">
+            <span class="stat__value">17</span>
+            <span class="stat__label">clientes atendidos, de clínicas a criadores</span>
+          </div>
+          <div class="stat glass reveal">
+            <span class="stat__value">2</span>
+            <span class="stat__label">países — Brasil e Estados Unidos</span>
+          </div>
+          <div class="stat glass reveal">
+            <span class="stat__value">24h</span>
+            <span class="stat__label">de prazo médio de entrega</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         DIFERENCIAIS
-         ============================================================ -->
-    <section class="why section" id="diferenciais">
+    <!-- ============ PORTFOLIO ============ -->
+    <section class="work section" id="trabalhos">
       <div class="container">
-        <div class="section__head reveal">
-          <p class="section__eyebrow">Por que trabalhar comigo</p>
-          <h2 class="section__title">Não é só edição.<br />É estratégia em movimento.</h2>
-        </div>
+        <header class="section__head reveal">
+          <p class="section__eyebrow">Portfolio</p>
+          <h2 class="section__title">Trabalhos que geram resultado.</h2>
+          <p class="section__sub">Anúncios, institucionais e conteúdo. Clique em qualquer vídeo para assistir.</p>
+        </header>
 
-        <div class="why__grid">
-          <article class="why__card glass glass--interactive reveal">
-            <div class="why__icon">⚡</div>
-            <h3 class="why__title">Velocidade sem perder acabamento</h3>
-            <p class="why__text">Rotina de produção enxuta: você recebe rápido, no ritmo que redes sociais e campanhas exigem.</p>
-          </article>
-          <article class="why__card glass glass--interactive reveal" style="--delay:.06s">
-            <div class="why__icon">🎬</div>
-            <h3 class="why__title">Storytelling que segura o dedo</h3>
-            <p class="why__text">Cada corte pensado para retenção. Não faço vídeo bonito — faço vídeo que as pessoas assistem até o fim.</p>
-          </article>
-          <article class="why__card glass glass--interactive reveal" style="--delay:.12s">
-            <div class="why__icon">📈</div>
-            <h3 class="why__title">Mentalidade de performance</h3>
-            <p class="why__text">Experiência com anúncios Meta: penso em CTA, hook e conversão, não só em estética. Vídeo é meio, resultado é fim.</p>
-          </article>
-          <article class="why__card glass glass--interactive reveal" style="--delay:.18s">
-            <div class="why__icon">🤝</div>
-            <h3 class="why__title">Parceiro, não fornecedor</h3>
-            <p class="why__text">Comunicação direta, prazos honestos e consistência para quem precisa de conteúdo recorrente todo mês.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        <div class="work__filters reveal" role="tablist" aria-label="Filtrar portfolio por categoria" id="workFilters"></div>
 
-    <!-- ============================================================
-         CTA FINAL + FAQ
-         ============================================================ -->
-    <section class="final section" id="faq">
-      <div class="container">
-        <div class="final__cta glass reveal">
-          <h2 class="final__title">Seu próximo vídeo pode ser<br />o que traz o próximo cliente.</h2>
-          <p class="final__lead">Manda uma mensagem. Em poucos minutos a gente já sabe se faz sentido trabalhar junto.</p>
-          <a href="#" class="btn btn--primary btn--xl js-whatsapp" data-wa-context="final">
-            <svg class="btn__icon" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
-            Falar no WhatsApp agora
+        <div class="work__grid" id="workGrid"></div>
+
+        <div class="cta-row glass reveal">
+          <p>Quer um vídeo assim para a sua marca?</p>
+          <a href="#" class="btn btn--primary js-whatsapp" data-wa-context="portfolio">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4 0-.6.2-.8l.4-.5c.1-.2.1-.3.2-.5v-.5c0-.1-.5-1.4-.7-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
+            Pedir orçamento
           </a>
-          <p class="final__reassure">Resposta rápida · Orçamento sem compromisso</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESSO ============ -->
+    <section class="process section" id="processo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__eyebrow">Processo</p>
+          <h2 class="section__title">Do briefing à entrega,<br />sem complicação.</h2>
+        </header>
+
+        <ol class="process__steps">
+          <li class="step glass reveal">
+            <span class="step__num">01</span>
+            <h3>Briefing rápido</h3>
+            <p>Você me conta o objetivo em uma conversa no WhatsApp. Quinze minutos bastam para alinhar tudo.</p>
+          </li>
+          <li class="step glass reveal">
+            <span class="step__num">02</span>
+            <h3>Proposta clara</h3>
+            <p>Escopo, prazo e valor definidos antes de começar. Sem surpresa no final.</p>
+          </li>
+          <li class="step glass reveal">
+            <span class="step__num">03</span>
+            <h3>Produção</h3>
+            <p>Edição, motion e sound design. Você acompanha as prévias e aprova cada etapa.</p>
+          </li>
+          <li class="step glass reveal">
+            <span class="step__num">04</span>
+            <h3>Entrega</h3>
+            <p>Arquivo final no formato certo de cada plataforma — em média 24h para vídeos curtos.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ DIFERENCIAIS ============ -->
+    <section class="edge section" id="diferenciais">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="section__eyebrow">Diferenciais</p>
+          <h2 class="section__title">Feito para gerar retorno,<br />não só para ficar bonito.</h2>
+        </header>
+
+        <div class="edge__grid">
+          <article class="edge-card glass reveal">
+            <div class="edge-card__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>
+            </div>
+            <h3>Velocidade que acompanha o seu negócio</h3>
+            <p>Entrega média de 24 horas. Seu conteúdo sai enquanto a promoção, o episódio ou a tendência ainda estão quentes.</p>
+          </article>
+          <article class="edge-card glass reveal">
+            <div class="edge-card__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3Zm0 4a5 5 0 1 0 5 5h-2a3 3 0 1 1-3-3V7Zm0 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+            </div>
+            <h3>Storytelling que prende e vende</h3>
+            <p>Gancho nos três primeiros segundos, ritmo que segura o público até o fim e chamada clara para a ação.</p>
+          </article>
+          <article class="edge-card glass reveal">
+            <div class="edge-card__ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 20V10h3v10H4Zm6.5 0V4h3v16h-3ZM17 20v-7h3v7h-3Z"/></svg>
+            </div>
+            <h3>Edição orientada a performance</h3>
+            <p>Criativos para Meta Ads com variações para teste A/B, legendas e formato certo para cada plataforma.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA FINAL + FAQ ============ -->
+    <section class="closing section" id="faq">
+      <div class="container">
+        <div class="closing__cta glass reveal">
+          <h2>Pronto para o próximo vídeo?</h2>
+          <p>Me chama no WhatsApp e me conta o seu objetivo. Resposta rápida e orçamento sem compromisso.</p>
+          <a href="#" class="btn btn--primary btn--lg js-whatsapp" data-wa-context="final">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4 0-.6.2-.8l.4-.5c.1-.2.1-.3.2-.5v-.5c0-.1-.5-1.4-.7-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
+            Chamar no WhatsApp
+          </a>
         </div>
 
         <div class="faq reveal">
           <h3 class="faq__title">Perguntas frequentes</h3>
-          <div class="faq__list">
-            <details class="faq__item glass">
-              <summary>Qual o prazo de entrega?</summary>
-              <p>Depende do formato, mas a média é de <strong>48h</strong>. Para contratos mensais, montamos um calendário fixo de entregas.</p>
-            </details>
-            <details class="faq__item glass">
-              <summary>Quanto custa?</summary>
-              <p>Trabalho por projeto ou por pacote mensal. O valor depende do volume e da complexidade. Me chama no WhatsApp com uma ideia do que precisa e te passo um orçamento claro, sem enrolação.</p>
-            </details>
-            <details class="faq__item glass">
-              <summary>Como funciona para quem precisa de vídeo todo mês?</summary>
-              <p>Ofereço pacotes recorrentes com prioridade de agenda e preço melhor por peça. Ideal para podcasts, clínicas e criadores que publicam com frequência.</p>
-            </details>
-            <details class="faq__item glass">
-              <summary>Você edita anúncios para tráfego pago?</summary>
-              <p>Sim. Tenho experiência com criativos para Meta Ads — hooks, variações e formatos pensados para conversão, não só para ficar bonito.</p>
-            </details>
-            <details class="faq__item glass">
-              <summary>Preciso mandar o material gravado?</summary>
-              <p>Na maioria dos casos sim — você grava, eu transformo em algo profissional. Também oriento sobre como gravar melhor com o que você já tem.</p>
-            </details>
-          </div>
+          <details class="faq__item">
+            <summary>Qual o prazo de entrega?<span class="faq__chevron" aria-hidden="true"></span></summary>
+            <p>Em média 24 horas para vídeos curtos — anúncios, Reels e cortes. Projetos maiores, como institucionais, têm prazo combinado na proposta.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Quanto custa?<span class="faq__chevron" aria-hidden="true"></span></summary>
+            <p>Depende do formato, da duração e do volume. Me chama no WhatsApp com o que você precisa e eu envio um orçamento rápido, sem compromisso.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Como envio o material bruto?<span class="faq__chevron" aria-hidden="true"></span></summary>
+            <p>Google Drive, WeTransfer ou a ferramenta que você preferir. A partir daí eu organizo tudo.</p>
+          </details>
+          <details class="faq__item">
+            <summary>E se eu precisar de ajustes?<span class="faq__chevron" aria-hidden="true"></span></summary>
+            <p>Ajustes fazem parte do processo: você revisa a prévia e eu refino até ficar do jeito certo, dentro do escopo combinado.</p>
+          </details>
+          <details class="faq__item">
+            <summary>Você atende contrato mensal?<span class="faq__chevron" aria-hidden="true"></span></summary>
+            <p>Sim. Para podcasts, redes sociais e anúncios com volume recorrente, o pacote mensal costuma sair mais vantajoso.</p>
+          </details>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
+  <!-- ============ FOOTER ============ -->
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <span class="nav__logo">burke<span class="nav__dot">.</span>mov</span>
-        <p>Vídeos que transformam atenção em clientes.</p>
+        <p class="nav__brand">burke<span>.mov</span></p>
+        <p class="footer__tag">Edição de vídeo &amp; motion design<br />por Davi Burke.</p>
       </div>
-
-      <nav class="footer__social" aria-label="Redes sociais">
-        <a href="https://instagram.com/burke_mov" target="_blank" rel="noopener" class="footer__link">Instagram</a>
-        <a href="https://www.behance.net/editordaviburke" target="_blank" rel="noopener" class="footer__link">Behance</a>
-        <a href="https://www.linkedin.com/in/davi-burke" target="_blank" rel="noopener" class="footer__link">LinkedIn</a>
-        <a href="mailto:editor.daviburke@gmail.com" class="footer__link">E-mail</a>
-        <a href="#" class="footer__link js-whatsapp" data-wa-context="footer">WhatsApp</a>
-      </nav>
+      <div class="footer__links">
+        <a href="https://instagram.com/burke_mov" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.behance.net/editordaviburke" target="_blank" rel="noopener">Behance</a>
+        <a href="https://www.linkedin.com/in/davi-burke" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:editor.daviburke@gmail.com">E-mail</a>
+        <a href="#" class="js-whatsapp" data-wa-context="footer">WhatsApp</a>
+      </div>
     </div>
-    <div class="container footer__bottom">
-      <span>© <span id="year"></span> burke.mov · @burke_mov</span>
-      <span>Feito com atenção aos detalhes.</span>
+    <div class="container footer__legal">
+      <p>© <span id="year">2026</span> burke.mov — Davi Burke. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- Botão flutuante de WhatsApp — sempre visível -->
-  <a href="#" class="wa-float js-whatsapp" data-wa-context="float" aria-label="Falar no WhatsApp">
-    <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
-    <span class="wa-float__pulse" aria-hidden="true"></span>
+  <!-- ============ WHATSAPP FLUTUANTE ============ -->
+  <a href="#" class="wa-float js-whatsapp" data-wa-context="float" aria-label="Conversar no WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-2.9c-.3-.4 0-.6.2-.8l.4-.5c.1-.2.1-.3.2-.5v-.5c0-.1-.5-1.4-.7-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.3Z"/></svg>
   </a>
 
-  <!-- Lightbox / Modal de vídeo -->
+  <!-- ============ MODAL DE VÍDEO ============ -->
   <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Player de vídeo" hidden>
     <div class="modal__backdrop" data-close></div>
-    <div class="modal__dialog glass">
-      <button class="modal__close" data-close aria-label="Fechar">&times;</button>
-      <div class="modal__video" id="modalVideo">
-        <!-- iframe/vídeo injetado via JS -->
-      </div>
-      <div class="modal__info">
-        <h3 class="modal__title" id="modalTitle"></h3>
-        <p class="modal__desc" id="modalDesc"></p>
-        <a href="#" class="btn btn--primary js-whatsapp" data-wa-context="modal">
-          <svg class="btn__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.05-.98.23-3.3-.7-2.78-1.1-4.55-3.96-4.69-4.15-.14-.19-1.12-1.49-1.12-2.84s.71-2.02.96-2.29c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.82 2.01.9 2.16.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.37-.42.49-.14.14-.28.28-.12.56.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.21 2.2 1.35.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.75 1.88.89.28.14.46.21.53.32.07.12.07.66-.17 1.34Z"/></svg>
-          Quero um vídeo assim
-        </a>
+    <div class="modal__box">
+      <button class="modal__close" type="button" aria-label="Fechar vídeo" data-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L5.4 19 4 17.6 9.6 12 4 6.4 5.4 5Z"/></svg>
+      </button>
+      <div class="modal__player" id="modalPlayer"></div>
+      <div class="modal__foot">
+        <p id="modalTitle"></p>
+        <a href="#" class="btn btn--sm btn--primary js-whatsapp" data-wa-context="modal">Quero um vídeo assim</a>
       </div>
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

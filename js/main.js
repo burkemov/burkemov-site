@@ -1,11 +1,12 @@
 /* ============================================================
    burke.mov — main.js
+   Config do WhatsApp · portfolio · modal · animações
    ============================================================ */
 
 /* ------------------------------------------------------------
-   CONFIG — [SUBSTITUIR] Única fonte da verdade.
-   Troque o número e as mensagens aqui e todos os botões
-   de WhatsApp do site são atualizados automaticamente.
+   CONFIG — fonte única da verdade.
+   Troque o número ou as mensagens aqui e todos os botões
+   de WhatsApp do site atualizam automaticamente.
    ------------------------------------------------------------ */
 const CONFIG = {
   // Formato internacional, só dígitos: 55 (Brasil) + DDD + número
@@ -16,8 +17,7 @@ const CONFIG = {
     default: "Olá! Vi seu site e quero conversar sobre um projeto de vídeo.",
     nav: "Olá! Vim pelo seu site e quero saber mais sobre seu trabalho.",
     hero: "Olá! Vi seu portfolio e quero conversar sobre um projeto.",
-    portfolio: "Olá! Gostei dos trabalhos e queria ver um exemplo do meu nicho.",
-    processo: "Olá! Quero começar um projeto de vídeo. Como funciona?",
+    portfolio: "Olá! Gostei dos seus trabalhos e quero um orçamento.",
     final: "Olá! Quero tirar um orçamento para um projeto de vídeo.",
     footer: "Olá! Vim pelo seu site e quero conversar.",
     float: "Olá! Vi seu site e quero conversar sobre um projeto.",
@@ -25,373 +25,318 @@ const CONFIG = {
   },
 };
 
-/* Monta o link wa.me a partir do contexto */
-function buildWhatsAppLink(context) {
-  const msg = CONFIG.messages[context] || CONFIG.messages.default;
-  return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
-}
-
-/* Aplica os links em todos os elementos .js-whatsapp */
-function initWhatsApp() {
-  document.querySelectorAll(".js-whatsapp").forEach((el) => {
-    const ctx = el.dataset.waContext || "default";
-    el.setAttribute("href", buildWhatsAppLink(ctx));
-    el.setAttribute("target", "_blank");
-    el.setAttribute("rel", "noopener");
-  });
-}
-
 /* ------------------------------------------------------------
    PORTFOLIO — vídeos reais (Vimeo).
-   - category: gaming | ads | corporativo
-   - videoType: "youtube" | "vimeo" | "mp4" | null
-   - videoId: id do Vimeo (só o número), YT, caminho do .mp4, ou null
-   - thumb: imagem do card, servida localmente de assets/thumbnails/
-            (capas do Vimeo baixadas). Se a imagem faltar, cai no gradiente.
-   - Títulos/descrições podem ser ajustados livremente.
+   - category: "ads" | "corporativo" | "gaming"  (novas categorias
+     podem ser adicionadas: o filtro é gerado automaticamente)
+   - aspect: "16:9" (padrão) ou "9:16" (vertical — vira card alto)
+   - thumb: imagem local em assets/thumbnails/
    ------------------------------------------------------------ */
 const PROJECTS = [
-  // ---- ADS ----
+  {
+    title: "Treasure Coast Legal — Institucional",
+    meta: "Corporativo · Advocacia — Flórida, EUA",
+    category: "corporativo",
+    tag: "Corporativo",
+    vimeoId: "1207932432",
+    thumb: "assets/thumbnails/1207932432.jpg",
+    aspect: "16:9",
+  },
   {
     title: "Estúdio de Pilates — Anúncio",
     meta: "Ads Meta · Studio de Pilates",
     category: "ads",
     tag: "Ads Meta",
-    videoType: "vimeo",
-    videoId: "1206133567",
+    vimeoId: "1206133567",
     thumb: "assets/thumbnails/1206133567.jpg",
-    desc: "Criativo pensado para captação de alunos: hook rápido e chamada clara para ação.",
+    aspect: "16:9",
+  },
+  {
+    title: "Grupo Axis — Institucional",
+    meta: "Corporativo · Grupo Axis",
+    category: "corporativo",
+    tag: "Corporativo",
+    vimeoId: "1206133606",
+    thumb: "assets/thumbnails/1206133606.jpg",
+    aspect: "16:9",
+  },
+  {
+    title: "Conteúdo Corporativo — Reels",
+    meta: "Corporativo · Formato vertical 9:16",
+    category: "corporativo",
+    tag: "Corporativo",
+    vimeoId: "1207932259",
+    thumb: "assets/thumbnails/1207932259.jpg",
+    aspect: "9:16",
+  },
+  {
+    title: "Felipe Barreto — Gaming 01",
+    meta: "Gaming · Felipe Barreto",
+    category: "gaming",
+    tag: "Gaming",
+    vimeoId: "1206133658",
+    thumb: "assets/thumbnails/1206133658.jpg",
+    aspect: "16:9",
   },
   {
     title: "Grupo Axis — Anúncio 01",
     meta: "Ads Meta · Grupo Axis",
     category: "ads",
     tag: "Ads Meta",
-    videoType: "vimeo",
-    videoId: "1206133707",
+    vimeoId: "1206133707",
     thumb: "assets/thumbnails/1206133707.jpg",
-    desc: "Vídeo de anúncio focado em conversão para campanha de tráfego pago.",
-  },
-  {
-    title: "Grupo Axis — Anúncio 02",
-    meta: "Ads Meta · Grupo Axis",
-    category: "ads",
-    tag: "Ads Meta",
-    videoType: "vimeo",
-    videoId: "1206133830",
-    thumb: "assets/thumbnails/1206133830.jpg",
-    desc: "Variação de criativo para teste A/B em campanha paga.",
-  },
-  // ---- CORPORATIVO ----
-  {
-    title: "Grupo Axis — Institucional",
-    meta: "Corporativo · Grupo Axis",
-    category: "corporativo",
-    tag: "Corporativo",
-    videoType: "vimeo",
-    videoId: "1206133606",
-    thumb: "assets/thumbnails/1206133606.jpg",
-    desc: "Vídeo institucional que posiciona a marca com credibilidade.",
+    aspect: "16:9",
   },
   {
     title: "Grupo Axis — Vídeo Corporativo",
     meta: "Corporativo · Grupo Axis",
     category: "corporativo",
     tag: "Corporativo",
-    videoType: "vimeo",
-    videoId: "1206133733",
+    vimeoId: "1206133733",
     thumb: "assets/thumbnails/1206133733.jpg",
-    desc: "Comunicação corporativa com ritmo e acabamento profissional.",
-  },
-  {
-    title: "Grupo Axis — Apresentação",
-    meta: "Corporativo · Grupo Axis",
-    category: "corporativo",
-    tag: "Corporativo",
-    videoType: "vimeo",
-    videoId: "1206133891",
-    thumb: "assets/thumbnails/1206133891.jpg",
-    desc: "Peça de apresentação que valoriza a empresa e o seu trabalho.",
-  },
-  // ---- GAMING ----
-  {
-    title: "Felipe Barreto — Gaming 01",
-    meta: "Gaming · Felipe Barreto",
-    category: "gaming",
-    tag: "Gaming",
-    videoType: "vimeo",
-    videoId: "1206133658",
-    thumb: "assets/thumbnails/1206133658.jpg",
-    desc: "Edição dinâmica com motion e efeitos para prender o público.",
+    aspect: "16:9",
   },
   {
     title: "Felipe Barreto — Gaming 02",
     meta: "Gaming · Felipe Barreto",
     category: "gaming",
     tag: "Gaming",
-    videoType: "vimeo",
-    videoId: "1206133772",
+    vimeoId: "1206133772",
     thumb: "assets/thumbnails/1206133772.jpg",
-    desc: "Cortes com ritmo e energia pensados para retenção e alcance.",
+    aspect: "16:9",
+  },
+  {
+    title: "Grupo Axis — Anúncio 02",
+    meta: "Ads Meta · Grupo Axis",
+    category: "ads",
+    tag: "Ads Meta",
+    vimeoId: "1206133830",
+    thumb: "assets/thumbnails/1206133830.jpg",
+    aspect: "16:9",
+  },
+  {
+    title: "Grupo Axis — Apresentação",
+    meta: "Corporativo · Grupo Axis",
+    category: "corporativo",
+    tag: "Corporativo",
+    vimeoId: "1206133891",
+    thumb: "assets/thumbnails/1206133891.jpg",
+    aspect: "16:9",
   },
   {
     title: "Felipe Barreto — Gaming 03",
     meta: "Gaming · Felipe Barreto",
     category: "gaming",
     tag: "Gaming",
-    videoType: "vimeo",
-    videoId: "1206133930",
+    vimeoId: "1206133930",
     thumb: "assets/thumbnails/1206133930.jpg",
-    desc: "Highlights editados para destacar os melhores momentos.",
+    aspect: "16:9",
   },
 ];
 
-const PLAY_ICON =
-  '<svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+const FILTER_LABELS = {
+  todos: "Todos",
+  ads: "Ads Meta",
+  corporativo: "Corporativo",
+  gaming: "Gaming",
+};
 
+const PLAY_ICON =
+  '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+
+/* ------------------------------------------------------------
+   WHATSAPP
+   ------------------------------------------------------------ */
+function buildWhatsAppLink(context) {
+  const msg = CONFIG.messages[context] || CONFIG.messages.default;
+  return `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+}
+
+function initWhatsApp() {
+  document.querySelectorAll(".js-whatsapp").forEach((el) => {
+    el.setAttribute("href", buildWhatsAppLink(el.dataset.waContext || "default"));
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+  });
+}
+
+/* ------------------------------------------------------------
+   PORTFOLIO — grid + filtros
+   ------------------------------------------------------------ */
 function renderPortfolio() {
-  const grid = document.getElementById("portfolioGrid");
+  const grid = document.getElementById("workGrid");
   if (!grid) return;
 
   grid.innerHTML = PROJECTS.map((p, i) => {
-    const thumb = p.thumb
-      ? `<img class="card__thumb" src="${p.thumb}" alt="${p.title}" loading="lazy" />`
-      : `<div class="card__thumb" role="img" aria-label="${p.title}"></div>`;
+    const tall = p.aspect === "9:16" ? " work-card--tall" : "";
     return `
-      <article class="card" data-category="${p.category}" data-index="${i}" tabindex="0" role="button" aria-label="Abrir ${p.title}">
-        ${thumb}
-        <div class="card__play">${PLAY_ICON}</div>
-        <div class="card__overlay">
-          <span class="card__tag">${p.tag}</span>
-          <h3 class="card__title">${p.title}</h3>
-          <p class="card__meta">${p.meta}</p>
+      <article class="work-card glass glass--light reveal${tall}" data-category="${p.category}">
+        <button class="work-card__media" type="button" data-index="${i}" aria-label="Assistir: ${p.title}">
+          <img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" />
+          <span class="work-card__tag">${p.tag}</span>
+          <span class="work-card__play" aria-hidden="true">${PLAY_ICON}</span>
+        </button>
+        <div class="work-card__info">
+          <h3 class="work-card__title">${p.title}</h3>
+          <p class="work-card__meta">${p.meta}</p>
         </div>
       </article>`;
   }).join("");
 
-  // Abrir modal por clique ou teclado
-  grid.querySelectorAll(".card").forEach((card) => {
-    const open = () => openModal(PROJECTS[+card.dataset.index]);
-    card.addEventListener("click", open);
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        open();
-      }
+  grid.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-index]");
+    if (trigger) openModal(Number(trigger.dataset.index), trigger);
+  });
+}
+
+function renderFilters() {
+  const wrap = document.getElementById("workFilters");
+  if (!wrap) return;
+
+  const counts = { todos: PROJECTS.length };
+  PROJECTS.forEach((p) => {
+    counts[p.category] = (counts[p.category] || 0) + 1;
+  });
+
+  wrap.innerHTML = Object.keys(counts)
+    .map(
+      (key, i) => `
+      <button class="filter${i === 0 ? " is-active" : ""}" type="button" data-filter="${key}">
+        ${FILTER_LABELS[key] || key}<span class="filter__count">${counts[key]}</span>
+      </button>`
+    )
+    .join("");
+
+  wrap.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-filter]");
+    if (!btn) return;
+
+    wrap.querySelectorAll(".filter").forEach((f) => f.classList.remove("is-active"));
+    btn.classList.add("is-active");
+
+    const key = btn.dataset.filter;
+    document.querySelectorAll(".work-card").forEach((card) => {
+      card.classList.toggle("is-hidden", key !== "todos" && card.dataset.category !== key);
     });
   });
 }
 
 /* ------------------------------------------------------------
-   FILTROS
-   ------------------------------------------------------------ */
-function initFilters() {
-  const filters = document.querySelectorAll(".filter");
-  filters.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      filters.forEach((f) => {
-        f.classList.remove("is-active");
-        f.setAttribute("aria-selected", "false");
-      });
-      btn.classList.add("is-active");
-      btn.setAttribute("aria-selected", "true");
-
-      const cat = btn.dataset.filter;
-      document.querySelectorAll(".card").forEach((card) => {
-        const show = cat === "all" || card.dataset.category === cat;
-        card.classList.toggle("is-hidden", !show);
-      });
-    });
-  });
-}
-
-/* ------------------------------------------------------------
-   MODAL / LIGHTBOX
+   MODAL — vídeo só carrega ao abrir (performance)
    ------------------------------------------------------------ */
 const modal = document.getElementById("videoModal");
-const modalVideo = document.getElementById("modalVideo");
+const modalPlayer = document.getElementById("modalPlayer");
 const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDesc");
+let lastFocused = null;
 
-function videoEmbed(project) {
-  const { videoType, videoId } = project;
-  if (videoType === "youtube" && videoId) {
-    return `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`;
-  }
-  if (videoType === "vimeo" && videoId) {
-    return `<iframe src="https://player.vimeo.com/video/${videoId}?autoplay=1" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
-  }
-  if (videoType === "mp4" && videoId) {
-    return `<video src="${videoId}" controls autoplay playsinline></video>`;
-  }
-  // Sem vídeo real ainda → placeholder
-  return `<div class="modal__video-placeholder">[SUBSTITUIR: adicionar vídeo real deste projeto em PROJECTS (videoType + videoId).]</div>`;
-}
+function openModal(index, trigger) {
+  const p = PROJECTS[index];
+  if (!p || !modal) return;
 
-function openModal(project) {
-  if (!project) return;
-  modalVideo.innerHTML = videoEmbed(project);
-  modalTitle.textContent = project.title;
-  modalDesc.textContent = project.desc || "";
+  lastFocused = trigger || document.activeElement;
+  modal.querySelector(".modal__box").classList.toggle("modal__box--vertical", p.aspect === "9:16");
+  modalTitle.textContent = p.title;
+  modalPlayer.innerHTML = `<iframe
+    src="https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1"
+    allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+    allowfullscreen
+    title="${p.title}"></iframe>`;
+
   modal.hidden = false;
-  document.body.style.overflow = "hidden";
+  document.body.classList.add("modal-open");
+  modal.querySelector(".modal__close").focus();
 }
 
 function closeModal() {
+  if (!modal || modal.hidden) return;
   modal.hidden = true;
-  modalVideo.innerHTML = ""; // para o vídeo
-  document.body.style.overflow = "";
+  modalPlayer.innerHTML = ""; // derruba o player e o áudio
+  document.body.classList.remove("modal-open");
+  if (lastFocused) lastFocused.focus();
 }
 
 function initModal() {
-  modal.querySelectorAll("[data-close]").forEach((el) =>
-    el.addEventListener("click", closeModal)
-  );
+  if (!modal) return;
+  modal.addEventListener("click", (e) => {
+    if (e.target.closest("[data-close]")) closeModal();
+  });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
+    if (e.key === "Escape") closeModal();
   });
 }
 
 /* ------------------------------------------------------------
-   NAV — scroll state + menu mobile
-   ------------------------------------------------------------ */
-function initNav() {
-  const nav = document.getElementById("nav");
-  const toggle = document.getElementById("navToggle");
-
-  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 20);
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  toggle.addEventListener("click", () => {
-    const open = nav.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
-  });
-
-  // Fecha o menu ao clicar num link
-  nav.querySelectorAll(".nav__link").forEach((link) =>
-    link.addEventListener("click", () => {
-      nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    })
-  );
-}
-
-/* ------------------------------------------------------------
-   REVEAL on scroll
+   SCROLL REVEAL — com stagger sutil por grupo
    ------------------------------------------------------------ */
 function initReveal() {
-  const els = document.querySelectorAll(".reveal");
+  const items = document.querySelectorAll(".reveal");
+
   if (!("IntersectionObserver" in window)) {
-    els.forEach((el) => el.classList.add("is-visible"));
+    items.forEach((el) => el.classList.add("is-in"));
     return;
   }
+
+  // Delay progressivo entre irmãos do mesmo grupo (cards, stats, steps)
+  items.forEach((el) => {
+    const siblings = el.parentElement
+      ? [...el.parentElement.children].filter((c) => c.classList.contains("reveal"))
+      : [el];
+    if (siblings.length > 1) {
+      el.style.setProperty("--reveal-delay", `${(siblings.indexOf(el) % 6) * 80}ms`);
+    }
+  });
+
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          entry.target.classList.add("is-in");
           io.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
   );
-  els.forEach((el) => io.observe(el));
+
+  items.forEach((el) => io.observe(el));
 }
 
 /* ------------------------------------------------------------
-   MÉTRICAS — contador animado
-   ------------------------------------------------------------ */
-function animateCount(el) {
-  const target = parseFloat(el.dataset.count);
-  const suffix = el.dataset.suffix || "";
-  const dur = 1400;
-  const start = performance.now();
-
-  function tick(now) {
-    const p = Math.min((now - start) / dur, 1);
-    const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
-    const val = Math.round(eased * target);
-    el.textContent = val + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-function initCounters() {
-  const els = document.querySelectorAll(".metric__value");
-  if (!("IntersectionObserver" in window)) {
-    els.forEach(animateCount);
-    return;
-  }
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.6 }
-  );
-  els.forEach((el) => io.observe(el));
-}
-
-/* ------------------------------------------------------------
-   LUZ seguindo cursor (cards interativos) — desktop apenas
+   LUZ NO CURSOR — só em desktop com ponteiro fino
    ------------------------------------------------------------ */
 function initCursorLight() {
-  if (window.matchMedia("(hover: none)").matches) return;
-  document.querySelectorAll(".glass--interactive").forEach((card) => {
-    card.addEventListener("pointermove", (e) => {
-      const r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      card.style.setProperty("--my", `${e.clientY - r.top}px`);
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!fine || reduced) return;
+
+  document.querySelectorAll(".glass--light").forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      el.style.setProperty("--my", `${e.clientY - r.top}px`);
     });
   });
 }
 
 /* ------------------------------------------------------------
-   PARALLAX leve nos glows do hero
+   NAV — sombra ao rolar
    ------------------------------------------------------------ */
-function initParallax() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const glows = document.querySelectorAll(".bg-glow");
-  let ticking = false;
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        glows.forEach((g, i) => {
-          g.style.transform = `translateY(${y * (0.04 + i * 0.02)}px)`;
-        });
-        ticking = false;
-      });
-    },
-    { passive: true }
-  );
+function initNav() {
+  const nav = document.getElementById("nav");
+  if (!nav) return;
+  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 8);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 }
 
 /* ------------------------------------------------------------
    INIT
    ------------------------------------------------------------ */
-document.addEventListener("DOMContentLoaded", () => {
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  initWhatsApp();
-  renderPortfolio();
-  initFilters();
-  initModal();
-  initNav();
-  initReveal();
-  initCounters();
-  initCursorLight();
-  initParallax();
-});
+document.getElementById("year").textContent = new Date().getFullYear();
+renderPortfolio();
+renderFilters();
+initWhatsApp(); // depois do render: pega também os botões criados dinamicamente
+initModal();
+initReveal();
+initCursorLight();
+initNav();

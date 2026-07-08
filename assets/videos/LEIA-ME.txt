@@ -1,2 +1,0 @@
-Coloque aqui os arquivos .mp4 dos projetos (ex.: clinica-bella.mp4).
-Depois referencie em js/main.js -> PROJECTS -> videoId: 'assets/videos/nome.mp4' e videoType: 'mp4'.
