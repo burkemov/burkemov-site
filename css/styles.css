@@ -478,7 +478,7 @@ button {
 
 .proof__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
@@ -551,7 +551,6 @@ button {
 .work__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-auto-flow: dense;
   gap: 18px;
 }
 
@@ -577,21 +576,26 @@ button {
   display: none;
 }
 
-.work-card--tall {
-  grid-row: span 2;
-}
-
 .work-card__media {
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   background: var(--bg-raise);
 }
 
-.work-card--tall .work-card__media {
-  aspect-ratio: auto;
-  flex: 1;
-  min-height: 0;
+/* Destaque horizontal (16:9) — banner de largura total no topo do grid */
+.work-card--wide {
+  grid-column: 1 / -1;
+}
+
+.work-card--wide .work-card__media {
+  aspect-ratio: 16 / 9;
+}
+
+@media (min-width: 1020px) {
+  .work-card--wide .work-card__media {
+    aspect-ratio: 21 / 9; /* corte cinematográfico no desktop */
+  }
 }
 
 .work-card__media img {
@@ -1161,7 +1165,7 @@ body.modal-open {
   }
 
   .proof__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 12px;
   }
 
@@ -1200,14 +1204,8 @@ body.modal-open {
     grid-template-columns: 1fr;
   }
 
-  .work-card--tall {
-    grid-row: auto;
-  }
-
-  .work-card--tall .work-card__media {
-    aspect-ratio: 9 / 16;
-    flex: none;
-    max-height: 72svh;
+  .work-card__media {
+    max-height: 74svh; /* card vertical não passa da altura da tela */
   }
 
   .process__steps {

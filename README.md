@@ -19,8 +19,8 @@ Site/
 ## Dados reais já preenchidos
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
-- **Métricas:** +5M views · 17 clientes · 2 países (BR/EUA) · entrega média 24h.
-- **Portfolio:** 11 vídeos do Vimeo (Ads Meta ×3, Corporativo ×5 — incl. Treasure Coast Legal/EUA e 1 vertical 9:16 —, Gaming ×3).
+- **Métricas:** +5M views · 17 clientes · entrega média 24h.
+- **Portfolio:** 11 vídeos do Vimeo — 10 verticais 9:16 + Treasure Coast Legal (16:9) como banner de destaque (Ads Meta ×3, Corporativo ×5, Gaming ×3).
 - **Contato:** Instagram, Behance, LinkedIn, e-mail e WhatsApp no footer.
 - **SEO/OG:** domínio `burkemov.com`, `assets/og-image.jpg` gerada.
 - Seção de depoimentos **omitida de propósito** (sem depoimentos reais ainda).
@@ -28,7 +28,7 @@ Site/
 ## Como editar
 
 - **Número/mensagens do WhatsApp:** `CONFIG` no topo de `js/main.js`.
-- **Adicionar vídeo:** nova entrada em `PROJECTS` (`js/main.js`). Campos: `title`, `meta`, `category`, `tag`, `vimeoId`, `thumb`, `aspect` (`"16:9"` ou `"9:16"` — vertical vira card alto no grid). Filtros e contadores são gerados automaticamente; para uma categoria nova, adicione o rótulo em `FILTER_LABELS`.
+- **Adicionar vídeo:** nova entrada em `PROJECTS` (`js/main.js`). Campos: `title`, `meta`, `category`, `tag`, `vimeoId`, `thumb`, `aspect` (`"9:16"` é o padrão do grid; `"16:9"` vira banner de destaque de largura total). Filtros e contadores são gerados automaticamente; para uma categoria nova, adicione o rótulo em `FILTER_LABELS`.
 - **Thumbnail de vídeo novo:** baixe a capa do Vimeo para `assets/thumbnails/` (ex.: `https://vumbnail.com/ID.jpg`).
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).

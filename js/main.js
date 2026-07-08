@@ -29,7 +29,8 @@ const CONFIG = {
    PORTFOLIO — vídeos reais (Vimeo).
    - category: "ads" | "corporativo" | "gaming"  (novas categorias
      podem ser adicionadas: o filtro é gerado automaticamente)
-   - aspect: "16:9" (padrão) ou "9:16" (vertical — vira card alto)
+   - aspect: "9:16" (vertical, padrão do grid) ou "16:9"
+     (horizontal — vira o banner de destaque de largura total)
    - thumb: imagem local em assets/thumbnails/
    ------------------------------------------------------------ */
 const PROJECTS = [
@@ -49,7 +50,7 @@ const PROJECTS = [
     tag: "Ads Meta",
     vimeoId: "1206133567",
     thumb: "assets/thumbnails/1206133567.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Grupo Axis — Institucional",
@@ -58,7 +59,7 @@ const PROJECTS = [
     tag: "Corporativo",
     vimeoId: "1206133606",
     thumb: "assets/thumbnails/1206133606.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Conteúdo Corporativo — Reels",
@@ -76,7 +77,7 @@ const PROJECTS = [
     tag: "Gaming",
     vimeoId: "1206133658",
     thumb: "assets/thumbnails/1206133658.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Grupo Axis — Anúncio 01",
@@ -85,7 +86,7 @@ const PROJECTS = [
     tag: "Ads Meta",
     vimeoId: "1206133707",
     thumb: "assets/thumbnails/1206133707.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Grupo Axis — Vídeo Corporativo",
@@ -94,7 +95,7 @@ const PROJECTS = [
     tag: "Corporativo",
     vimeoId: "1206133733",
     thumb: "assets/thumbnails/1206133733.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Felipe Barreto — Gaming 02",
@@ -103,7 +104,7 @@ const PROJECTS = [
     tag: "Gaming",
     vimeoId: "1206133772",
     thumb: "assets/thumbnails/1206133772.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Grupo Axis — Anúncio 02",
@@ -112,7 +113,7 @@ const PROJECTS = [
     tag: "Ads Meta",
     vimeoId: "1206133830",
     thumb: "assets/thumbnails/1206133830.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Grupo Axis — Apresentação",
@@ -121,7 +122,7 @@ const PROJECTS = [
     tag: "Corporativo",
     vimeoId: "1206133891",
     thumb: "assets/thumbnails/1206133891.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
   {
     title: "Felipe Barreto — Gaming 03",
@@ -130,7 +131,7 @@ const PROJECTS = [
     tag: "Gaming",
     vimeoId: "1206133930",
     thumb: "assets/thumbnails/1206133930.jpg",
-    aspect: "16:9",
+    aspect: "9:16",
   },
 ];
 
@@ -168,9 +169,9 @@ function renderPortfolio() {
   if (!grid) return;
 
   grid.innerHTML = PROJECTS.map((p, i) => {
-    const tall = p.aspect === "9:16" ? " work-card--tall" : "";
+    const wide = p.aspect === "16:9" ? " work-card--wide" : "";
     return `
-      <article class="work-card glass glass--light reveal${tall}" data-category="${p.category}">
+      <article class="work-card glass glass--light reveal${wide}" data-category="${p.category}">
         <button class="work-card__media" type="button" data-index="${i}" aria-label="Assistir: ${p.title}">
           <img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" />
           <span class="work-card__tag">${p.tag}</span>
