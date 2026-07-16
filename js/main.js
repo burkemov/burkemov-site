@@ -27,8 +27,10 @@ const CONFIG = {
 
 /* ------------------------------------------------------------
    PORTFOLIO — vídeos reais (Vimeo).
-   - category: "ads" | "corporativo" | "gaming"  (novas categorias
-     podem ser adicionadas: o filtro é gerado automaticamente)
+   - category: "ads" | "corporativo" | "gaming" | "motion"...
+     Novas categorias podem ser adicionadas (o filtro é gerado
+     automaticamente; rótulo em FILTER_LABELS). Um vídeo pode ter
+     mais de uma categoria, separadas por espaço: "corporativo ads".
    - aspect: "9:16" (vertical, padrão do grid) ou "16:9"
      (horizontal — vira o banner de destaque de largura total)
    - thumb: imagem local em assets/thumbnails/
@@ -37,7 +39,7 @@ const PROJECTS = [
   {
     title: "Treasure Coast Legal — Institucional",
     meta: "Corporativo · Advocacia — Flórida, EUA",
-    category: "corporativo",
+    category: "corporativo ads",
     tag: "Corporativo",
     vimeoId: "1207932432",
     thumb: "assets/thumbnails/1207932432.jpg",
@@ -62,12 +64,21 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Barbearia Huiós — Shorts",
+    title: "Huiós Barbershop — Highlights",
     meta: "Ads Meta · Cortes sincronizados com música",
     category: "ads",
     tag: "Ads Meta",
     vimeoId: "1207932259",
     thumb: "assets/thumbnails/1207932259.jpg",
+    aspect: "9:16",
+  },
+  {
+    title: "Carro Pixar — Motion & VFX",
+    meta: "Motion Design · Olhos animados no para-brisa",
+    category: "motion",
+    tag: "Motion",
+    vimeoId: "1210391135",
+    thumb: "assets/thumbnails/1210391135.jpg",
     aspect: "9:16",
   },
   {
@@ -116,7 +127,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Apresentação",
+    title: "Grupo Axis — Vídeo Corporativo 2",
     meta: "Corporativo · Grupo Axis",
     category: "corporativo",
     tag: "Corporativo",
@@ -140,6 +151,7 @@ const FILTER_LABELS = {
   ads: "Ads Meta",
   corporativo: "Corporativo",
   gaming: "Gaming",
+  motion: "Motion",
 };
 
 const PLAY_ICON =
@@ -196,7 +208,9 @@ function renderFilters() {
 
   const counts = { todos: PROJECTS.length };
   PROJECTS.forEach((p) => {
-    counts[p.category] = (counts[p.category] || 0) + 1;
+    p.category.split(" ").forEach((c) => {
+      counts[c] = (counts[c] || 0) + 1;
+    });
   });
 
   wrap.innerHTML = Object.keys(counts)
@@ -217,7 +231,8 @@ function renderFilters() {
 
     const key = btn.dataset.filter;
     document.querySelectorAll(".work-card").forEach((card) => {
-      card.classList.toggle("is-hidden", key !== "todos" && card.dataset.category !== key);
+      const cats = card.dataset.category.split(" ");
+      card.classList.toggle("is-hidden", key !== "todos" && !cats.includes(key));
     });
   });
 }
