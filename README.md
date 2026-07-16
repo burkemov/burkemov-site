@@ -20,7 +20,7 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 11 vídeos do Vimeo — 10 verticais 9:16 + Treasure Coast Legal (16:9) como banner de destaque (Ads Meta ×3, Corporativo ×5, Gaming ×3).
+- **Portfolio:** 11 vídeos do Vimeo — 10 verticais 9:16 + Treasure Coast Legal (16:9) como banner de destaque (Ads Meta ×4, Corporativo ×4, Gaming ×3).
 - **Contato:** Instagram, Behance, LinkedIn, e-mail e WhatsApp no footer.
 - **SEO/OG:** domínio `burkemov.com`, `assets/og-image.jpg` gerada.
 - Seção de depoimentos **omitida de propósito** (sem depoimentos reais ainda).
