@@ -33,6 +33,9 @@ const CONFIG = {
      mais de uma categoria, separadas por espaço: "corporativo ads".
    - aspect: "9:16" (vertical, padrão do grid) ou "16:9"
      (horizontal — vira o banner de destaque de largura total)
+   - vídeo: use vimeoId (player do Vimeo) OU mp4 (caminho de um
+     arquivo em assets/videos/ — hospedado no próprio site,
+     player nativo, sem depender de serviço externo)
    - thumb: imagem local em assets/thumbnails/
    ------------------------------------------------------------ */
 const PROJECTS = [
@@ -98,6 +101,15 @@ const PROJECTS = [
     vimeoId: "1206133707",
     thumb: "assets/thumbnails/1206133707.jpg",
     aspect: "9:16",
+  },
+  {
+    title: "Seguidor Não Paga Boleto — Motion",
+    meta: "Motion Design · Bernardo",
+    category: "motion",
+    tag: "Motion",
+    mp4: "assets/videos/bernardo-seguidor-nao-paga-boleto.mp4",
+    thumb: "assets/thumbnails/bernardo-seguidor.jpg",
+    aspect: "16:9",
   },
   {
     title: "Grupo Axis — Vídeo Corporativo",
@@ -252,7 +264,9 @@ function openModal(index, trigger) {
   lastFocused = trigger || document.activeElement;
   modal.querySelector(".modal__box").classList.toggle("modal__box--vertical", p.aspect === "9:16");
   modalTitle.textContent = p.title;
-  modalPlayer.innerHTML = `<iframe
+  modalPlayer.innerHTML = p.mp4
+    ? `<video src="${p.mp4}" controls autoplay playsinline></video>`
+    : `<iframe
     src="https://player.vimeo.com/video/${p.vimeoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0&dnt=1"
     allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
     allowfullscreen

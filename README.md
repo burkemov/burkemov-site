@@ -20,7 +20,7 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 12 vídeos do Vimeo — 11 verticais 9:16 + Treasure Coast Legal (16:9) como banner de destaque. Filtros: Corporativo 4 · Ads Meta 5 · Gaming 3 · Motion 1 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
+- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Seguidor Não Paga Boleto", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: Corporativo 4 · Ads Meta 5 · Gaming 3 · Motion 2 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
 - **Contato:** Instagram, Behance, LinkedIn, e-mail e WhatsApp no footer.
 - **SEO/OG:** domínio `burkemov.com`, `assets/og-image.jpg` gerada.
 - Seção de depoimentos **omitida de propósito** (sem depoimentos reais ainda).
@@ -28,7 +28,7 @@ Site/
 ## Como editar
 
 - **Número/mensagens do WhatsApp:** `CONFIG` no topo de `js/main.js`.
-- **Adicionar vídeo:** nova entrada em `PROJECTS` (`js/main.js`). Campos: `title`, `meta`, `category`, `tag`, `vimeoId`, `thumb`, `aspect` (`"9:16"` é o padrão do grid; `"16:9"` vira banner de destaque de largura total). Filtros e contadores são gerados automaticamente; para uma categoria nova, adicione o rótulo em `FILTER_LABELS`.
+- **Adicionar vídeo:** nova entrada em `PROJECTS` (`js/main.js`). Campos: `title`, `meta`, `category`, `tag`, `vimeoId` **ou** `mp4` (caminho de um arquivo em `assets/videos/` — comprima antes: `avconvert -p Preset1280x720 -s origem.mp4 -o destino.mp4`; manter abaixo de ~50 MB), `thumb`, `aspect` (`"9:16"` é o padrão do grid; `"16:9"` vira banner de destaque de largura total). Filtros e contadores são gerados automaticamente; para uma categoria nova, adicione o rótulo em `FILTER_LABELS`.
 - **Thumbnail de vídeo novo:** baixe a capa do Vimeo para `assets/thumbnails/` (ex.: `https://vumbnail.com/ID.jpg`).
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).
