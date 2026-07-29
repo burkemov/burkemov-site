@@ -13,9 +13,9 @@ ACCENT = (10, 132, 255)
 DESTINO = os.path.join(os.path.dirname(__file__), "..", "assets", "og-image.jpg")
 
 TITULO = "burke.mov"
-LINHA1 = "Vídeos que transformam"
-LINHA2 = "atenção em clientes."
-RODAPE = "+5M de views geradas   ·   17 clientes   ·   entrega média em 24h   ·   @burke_mov"
+LINHA1 = "Video that turns attention"
+LINHA2 = "into clients."
+RODAPE = "5M+ views   ·   17 clients   ·   24h average turnaround   ·   @burke_mov"
 
 
 def find_font(style_wanted, size):

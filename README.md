@@ -20,10 +20,16 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Seguidor Não Paga Boleto", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: Corporativo 4 · Ads Meta 5 · Gaming 3 · Motion 2 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
+- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: Corporate 4 · Meta Ads 5 · Gaming 3 · Motion 2 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
 - **Contato:** Instagram, Behance, LinkedIn, e-mail e WhatsApp no footer.
 - **SEO/OG:** domínio `burkemov.com`, `assets/og-image.jpg` gerada.
 - Seção de depoimentos **omitida de propósito** (sem depoimentos reais ainda).
+
+## Idioma
+
+O site é **inteiramente em inglês americano** (`lang="en-US"`): textos, títulos dos vídeos, rótulos dos filtros, mensagens pré-preenchidas do WhatsApp, meta tags e a OG image. As âncoras do menu também são em inglês (`#home`, `#work`, `#process`, `#why`, `#faq`) e as chaves de categoria em `PROJECTS` são `ads` / `corporate` / `gaming` / `motion`.
+
+Os **comentários do código continuam em português** de propósito — eles são para você manter o site, não aparecem para o visitante.
 
 ## Como editar
 

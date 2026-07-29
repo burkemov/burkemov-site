@@ -14,23 +14,23 @@ const CONFIG = {
 
   // Mensagem pré-preenchida por contexto (reduz fricção do lead)
   messages: {
-    default: "Olá! Vi seu site e quero conversar sobre um projeto de vídeo.",
-    nav: "Olá! Vim pelo seu site e quero saber mais sobre seu trabalho.",
-    hero: "Olá! Vi seu portfolio e quero conversar sobre um projeto.",
-    portfolio: "Olá! Gostei dos seus trabalhos e quero um orçamento.",
-    final: "Olá! Quero tirar um orçamento para um projeto de vídeo.",
-    footer: "Olá! Vim pelo seu site e quero conversar.",
-    float: "Olá! Vi seu site e quero conversar sobre um projeto.",
-    modal: "Olá! Vi um trabalho no seu site e quero um vídeo parecido.",
+    default: "Hi! I saw your website and I'd like to talk about a video project.",
+    nav: "Hi! I came from your website and I'd like to know more about your work.",
+    hero: "Hi! I saw your portfolio and I'd like to talk about a project.",
+    portfolio: "Hi! I liked your work and I'd like to get a quote.",
+    final: "Hi! I'd like to get a quote for a video project.",
+    footer: "Hi! I came from your website and I'd like to chat.",
+    float: "Hi! I saw your website and I'd like to talk about a project.",
+    modal: "Hi! I saw one of your videos and I want something similar.",
   },
 };
 
 /* ------------------------------------------------------------
    PORTFOLIO — vídeos reais (Vimeo).
-   - category: "ads" | "corporativo" | "gaming" | "motion"...
+   - category: "ads" | "corporate" | "gaming" | "motion"...
      Novas categorias podem ser adicionadas (o filtro é gerado
      automaticamente; rótulo em FILTER_LABELS). Um vídeo pode ter
-     mais de uma categoria, separadas por espaço: "corporativo ads".
+     mais de uma categoria, separadas por espaço: "corporate ads".
    - aspect: "9:16" (vertical, padrão do grid) ou "16:9"
      (horizontal — vira o banner de destaque de largura total)
    - vídeo: use vimeoId (player do Vimeo) OU mp4 (caminho de um
@@ -40,44 +40,44 @@ const CONFIG = {
    ------------------------------------------------------------ */
 const PROJECTS = [
   {
-    title: "Treasure Coast Legal — Institucional",
-    meta: "Corporativo · Advocacia — Flórida, EUA",
-    category: "corporativo ads",
-    tag: "Corporativo",
+    title: "Treasure Coast Legal — Brand Film",
+    meta: "Corporate · Law firm — Florida, USA",
+    category: "corporate ads",
+    tag: "Corporate",
     vimeoId: "1207932432",
     thumb: "assets/thumbnails/1207932432.jpg",
     aspect: "16:9",
   },
   {
-    title: "Estúdio de Pilates — Anúncio",
-    meta: "Ads Meta · Studio de Pilates",
+    title: "Pilates Studio — Ad",
+    meta: "Meta Ads · Pilates Studio",
     category: "ads",
-    tag: "Ads Meta",
+    tag: "Meta Ads",
     vimeoId: "1206133567",
     thumb: "assets/thumbnails/1206133567.jpg",
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Institucional",
-    meta: "Corporativo · Grupo Axis",
-    category: "corporativo",
-    tag: "Corporativo",
+    title: "Grupo Axis — Brand Film",
+    meta: "Corporate · Grupo Axis",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1206133606",
     thumb: "assets/thumbnails/1206133606.jpg",
     aspect: "9:16",
   },
   {
     title: "Huiós Barbershop — Highlights",
-    meta: "Ads Meta · Cortes sincronizados com música",
+    meta: "Meta Ads · Music-synced cuts",
     category: "ads",
-    tag: "Ads Meta",
+    tag: "Meta Ads",
     vimeoId: "1207932259",
     thumb: "assets/thumbnails/1207932259.jpg",
     aspect: "9:16",
   },
   {
-    title: "Carro Pixar — Motion & VFX",
-    meta: "Motion Design · Olhos animados no para-brisa",
+    title: "Pixar Car — Motion & VFX",
+    meta: "Motion Design · Animated eyes on the windshield",
     category: "motion",
     tag: "Motion",
     vimeoId: "1210391135",
@@ -94,16 +94,16 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Anúncio 01",
-    meta: "Ads Meta · Grupo Axis",
+    title: "Grupo Axis — Ad 01",
+    meta: "Meta Ads · Grupo Axis",
     category: "ads",
-    tag: "Ads Meta",
+    tag: "Meta Ads",
     vimeoId: "1206133707",
     thumb: "assets/thumbnails/1206133707.jpg",
     aspect: "9:16",
   },
   {
-    title: "Seguidor Não Paga Boleto — Motion",
+    title: "Followers Don't Pay the Bills — Motion",
     meta: "Motion Design · Bernardo",
     category: "motion",
     tag: "Motion",
@@ -112,10 +112,10 @@ const PROJECTS = [
     aspect: "16:9",
   },
   {
-    title: "Grupo Axis — Vídeo Corporativo",
-    meta: "Corporativo · Grupo Axis",
-    category: "corporativo",
-    tag: "Corporativo",
+    title: "Grupo Axis — Corporate Video",
+    meta: "Corporate · Grupo Axis",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1206133733",
     thumb: "assets/thumbnails/1206133733.jpg",
     aspect: "9:16",
@@ -130,19 +130,19 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Anúncio 02",
-    meta: "Ads Meta · Grupo Axis",
+    title: "Grupo Axis — Ad 02",
+    meta: "Meta Ads · Grupo Axis",
     category: "ads",
-    tag: "Ads Meta",
+    tag: "Meta Ads",
     vimeoId: "1206133830",
     thumb: "assets/thumbnails/1206133830.jpg",
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Vídeo Corporativo 2",
-    meta: "Corporativo · Grupo Axis",
-    category: "corporativo",
-    tag: "Corporativo",
+    title: "Grupo Axis — Corporate Video 2",
+    meta: "Corporate · Grupo Axis",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1206133891",
     thumb: "assets/thumbnails/1206133891.jpg",
     aspect: "9:16",
@@ -159,9 +159,9 @@ const PROJECTS = [
 ];
 
 const FILTER_LABELS = {
-  todos: "Todos",
-  ads: "Ads Meta",
-  corporativo: "Corporativo",
+  all: "All",
+  ads: "Meta Ads",
+  corporate: "Corporate",
   gaming: "Gaming",
   motion: "Motion",
 };
@@ -196,7 +196,7 @@ function renderPortfolio() {
     const wide = p.aspect === "16:9" ? " work-card--wide" : "";
     return `
       <article class="work-card glass glass--light reveal${wide}" data-category="${p.category}">
-        <button class="work-card__media" type="button" data-index="${i}" aria-label="Assistir: ${p.title}">
+        <button class="work-card__media" type="button" data-index="${i}" aria-label="Watch: ${p.title}">
           <img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" />
           <span class="work-card__tag">${p.tag}</span>
           <span class="work-card__play" aria-hidden="true">${PLAY_ICON}</span>
@@ -218,7 +218,7 @@ function renderFilters() {
   const wrap = document.getElementById("workFilters");
   if (!wrap) return;
 
-  const counts = { todos: PROJECTS.length };
+  const counts = { all: PROJECTS.length };
   PROJECTS.forEach((p) => {
     p.category.split(" ").forEach((c) => {
       counts[c] = (counts[c] || 0) + 1;
@@ -244,7 +244,7 @@ function renderFilters() {
     const key = btn.dataset.filter;
     document.querySelectorAll(".work-card").forEach((card) => {
       const cats = card.dataset.category.split(" ");
-      card.classList.toggle("is-hidden", key !== "todos" && !cats.includes(key));
+      card.classList.toggle("is-hidden", key !== "all" && !cats.includes(key));
     });
   });
 }
