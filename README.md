@@ -22,7 +22,9 @@ Site/
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
 - **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: Corporate 4 · Meta Ads 5 · Gaming 3 · Motion 2 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
 - **Contato:** Instagram, Behance, LinkedIn, e-mail e WhatsApp no footer.
-- **SEO/OG:** domínio `burkemov.com`, `assets/og-image.jpg` gerada.
+- **SEO/OG:** URLs absolutas apontam para `https://burkemov.vercel.app/` (domínio no ar). `assets/og-image.jpg` mostra 3 frames reais do portfolio.
+
+> ⚠️ **Domínio:** `burkemov.com` **não está registrado** (NXDOMAIN). Enquanto isso, as URLs absolutas do `index.html` (canonical, `og:url`, `og:image`, `twitter:image`, JSON-LD) usam `burkemov.vercel.app`. Se um dia comprar o domínio, troque as 5 ocorrências — se apontarem para um domínio que não existe, **a imagem de preview do link some** (foi exatamente o que acontecia).
 - Seção de depoimentos **omitida de propósito** (sem depoimentos reais ainda).
 
 ## Idioma
