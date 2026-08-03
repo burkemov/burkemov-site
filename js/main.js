@@ -23,7 +23,6 @@ const CONFIG = {
   messages: {
     default: "Hi! I saw your website and I'd like to talk about a video project.",
     hero: "Hi! I saw your portfolio and I'd like to talk about a project.",
-    modal: "Hi! I saw one of your videos and I want something similar.",
   },
 };
 
@@ -371,24 +370,23 @@ function toast(msg) {
 }
 
 function initDiscord() {
-  const el = document.querySelector(".js-discord");
-  if (!el) return;
+  document.querySelectorAll(".js-discord").forEach((el) => {
+    if (CONFIG.discordUserId) {
+      el.setAttribute("href", `https://discord.com/users/${CONFIG.discordUserId}`);
+      el.setAttribute("target", "_blank");
+      el.setAttribute("rel", "noopener");
+      return;
+    }
 
-  if (CONFIG.discordUserId) {
-    el.setAttribute("href", `https://discord.com/users/${CONFIG.discordUserId}`);
-    el.setAttribute("target", "_blank");
-    el.setAttribute("rel", "noopener");
-    return;
-  }
-
-  el.setAttribute("href", `https://discord.com/users/${CONFIG.discordUsername}`);
-  el.addEventListener("click", (e) => {
-    e.preventDefault();
-    const user = CONFIG.discordUsername;
-    navigator.clipboard?.writeText(user).then(
-      () => toast(`Discord username copied: ${user}`),
-      () => toast(`Discord: ${user}`)
-    );
+    el.setAttribute("href", `https://discord.com/users/${CONFIG.discordUsername}`);
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const user = CONFIG.discordUsername;
+      navigator.clipboard?.writeText(user).then(
+        () => toast(`Discord username copied: ${user}`),
+        () => toast(`Discord: ${user}`)
+      );
+    });
   });
 }
 

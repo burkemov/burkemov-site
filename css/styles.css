@@ -122,6 +122,27 @@ button {
     var(--bg);
 }
 
+/* Vinheta: escurece as bordas e concentra o olhar no centro */
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(125% 95% at 50% 38%, transparent 42%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* Grão de filme: textura sutil, coerente com uma marca de vídeo */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 /* Feixe azul que atravessa o fundo lentamente */
 .bg__beam {
   position: absolute;
@@ -226,8 +247,10 @@ button {
   margin: 0 auto clamp(26px, 4vh, 38px);
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55), var(--glass-glow);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* Halo azul: destaca o rosto e amarra com o feixe do fundo */
+  box-shadow: 0 0 46px rgba(10, 132, 255, 0.3), 0 14px 44px rgba(0, 0, 0, 0.6),
+    var(--glass-glow);
 }
 
 .hero__title {
@@ -310,6 +333,21 @@ button {
   transform: translateY(-1px) scale(0.96);
 }
 
+/* Contato principal (Discord): já nasce tingido e um pouco maior */
+.contact--primary {
+  width: 54px;
+  height: 54px;
+  color: #c9cfff;
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.36), rgba(88, 101, 242, 0.14));
+  border-color: rgba(88, 101, 242, 0.5);
+  box-shadow: var(--lg-inset), 0 8px 30px rgba(88, 101, 242, 0.32);
+}
+
+.contact--primary svg {
+  width: 23px;
+  height: 23px;
+}
+
 /* WhatsApp e Discord ganham a cor da marca no hover */
 .contact.js-whatsapp:hover {
   color: var(--wa);
@@ -319,10 +357,10 @@ button {
 }
 
 .contact.js-discord:hover {
-  color: #8b95ff;
-  border-color: rgba(88, 101, 242, 0.5);
-  background: linear-gradient(135deg, rgba(88, 101, 242, 0.26), rgba(88, 101, 242, 0.1));
-  box-shadow: var(--lg-inset), 0 12px 32px rgba(88, 101, 242, 0.32);
+  color: #fff;
+  border-color: rgba(88, 101, 242, 0.8);
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.55), rgba(88, 101, 242, 0.26));
+  box-shadow: var(--lg-inset), 0 14px 38px rgba(88, 101, 242, 0.48);
 }
 
 /* Rótulo que aparece no hover */
@@ -384,19 +422,26 @@ button {
   pointer-events: none;
 }
 
-/* Vidro com tingimento verde do WhatsApp */
+/* Vidro com tingimento roxo do Discord */
 .btn--primary {
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.38), rgba(37, 211, 102, 0.18));
-  border: 1px solid rgba(37, 211, 102, 0.45);
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.44), rgba(88, 101, 242, 0.2));
+  border: 1px solid rgba(88, 101, 242, 0.5);
   color: #fff;
-  box-shadow: var(--lg-inset), 0 8px 28px rgba(37, 211, 102, 0.28);
+  box-shadow: var(--lg-inset), 0 8px 28px rgba(88, 101, 242, 0.3);
 }
 
 .btn--primary:hover {
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.52), rgba(37, 211, 102, 0.28));
-  border-color: rgba(37, 211, 102, 0.7);
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.6), rgba(88, 101, 242, 0.3));
+  border-color: rgba(88, 101, 242, 0.75);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--lg-inset), 0 12px 38px rgba(37, 211, 102, 0.45);
+  box-shadow: var(--lg-inset), 0 12px 38px rgba(88, 101, 242, 0.48);
+}
+
+.btn__ico {
+  position: relative; /* acima do brilho */
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
 }
 
 .btn:active {
@@ -487,8 +532,9 @@ button {
 
 .work-card:hover {
   transform: translateY(-4px) scale(1.015);
-  border-color: rgba(255, 255, 255, 0.24);
-  box-shadow: var(--glass-glow), 0 18px 48px rgba(0, 0, 0, 0.55);
+  border-color: rgba(255, 255, 255, 0.26);
+  box-shadow: var(--lg-inset), 0 18px 48px rgba(0, 0, 0, 0.55),
+    0 0 42px rgba(10, 132, 255, 0.16);
 }
 
 .work-card.is-hidden {
@@ -871,6 +917,12 @@ body.modal-open {
   .contact {
     width: 44px;
     height: 44px;
+  }
+
+  /* O principal continua maior que os demais também no mobile */
+  .contact--primary {
+    width: 52px;
+    height: 52px;
   }
 
   .modal {
