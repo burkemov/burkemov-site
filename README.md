@@ -48,7 +48,7 @@ Os **comentários do código continuam em português** de propósito — eles s�
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).
 - **Foto do hero:** `assets/profile.jpg`, quadrada (1:1) com o rosto centralizado — o CSS a recorta em círculo.
-- **Discord:** o ícone só abre a conversa direto com o `discordUserId` (ID numérico) preenchido em `CONFIG`. Para pegá-lo: Discord > Configurações > Avançado > Modo desenvolvedor, depois botão direito no seu perfil > "Copiar ID do usuário". Enquanto estiver vazio, o clique copia o nome de usuário (`discordUsername`) e mostra um aviso.
+- **Discord:** `CONFIG.discordUserId` (`497121311626231812`) faz o ícone abrir o perfil direto, com o botão "Message". Se esse campo for esvaziado, o clique volta a copiar o `discordUsername` e mostrar um aviso — o Discord não tem URL de conversa por nome de usuário, só por ID numérico.
 
 ## Rodar localmente
 

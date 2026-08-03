@@ -16,7 +16,7 @@ const CONFIG = {
   // Discord > Configurações > Avançado > Modo desenvolvedor > botão
   // direito no seu perfil > "Copiar ID do usuário". Enquanto estiver
   // vazio, o ícone copia o nome de usuário abaixo.
-  discordUserId: "",
+  discordUserId: "497121311626231812",
   discordUsername: "burke_mov",
 
   // Mensagem pré-preenchida por contexto (reduz fricção do lead)
