@@ -532,10 +532,15 @@ button {
    ------------------------------------------------------------ */
 .footer {
   border-top: 1px solid var(--hairline);
-  padding: 30px var(--gutter) 38px;
+  padding: 40px var(--gutter) 44px;
   text-align: center;
   font-size: 0.8rem;
   color: var(--text-3);
+}
+
+/* Contatos secundários (Instagram, Behance, LinkedIn, e-mail) */
+.contacts--footer {
+  margin: 0 0 26px;
 }
 
 /* ------------------------------------------------------------
