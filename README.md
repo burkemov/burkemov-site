@@ -1,7 +1,11 @@
 # burke.mov — Site de conversão
 
-Site single-page para **@burke_mov** (Davi Burke), editor de vídeo e motion designer.
-Estética **Apple Liquid Glass Dark** com acento azul-elétrico. HTML/CSS/JS puro, sem build, pronto para deploy.
+Site single-page para **@burke_mov** (Davi Burke), editor de vídeo.
+Layout minimalista centrado (foto redonda, título, descrição, contatos) sobre estética
+**Apple Liquid Glass Dark**. HTML/CSS/JS puro, sem build, pronto para deploy.
+
+**Página = hero + portfolio + rodapé.** Não há menu, métricas, processo, diferenciais nem FAQ:
+tudo isso foi removido de propósito para nada competir com os vídeos.
 
 ## Estrutura
 
@@ -12,8 +16,10 @@ Site/
 ├── js/main.js          # Config do WhatsApp, portfolio, modal, animações
 └── assets/
     ├── favicon.svg
+    ├── profile.jpg     # Foto do hero (512×512, recorte 1:1 no rosto)
     ├── og-image.jpg    # Preview 1200×630 p/ WhatsApp/DM
-    └── thumbnails/     # Capas dos vídeos (locais, sem dependência externa)
+    ├── thumbnails/     # Capas dos vídeos (locais, sem dependência externa)
+    └── videos/         # MP4 hospedado no próprio site
 ```
 
 ## Dados reais já preenchidos
@@ -21,7 +27,8 @@ Site/
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
 - **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: Corporate 4 · Meta Ads 5 · Gaming 3 · Motion 2 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
-- **Contato:** Instagram, Behance, LinkedIn, e-mail e WhatsApp no footer.
+- **Contato:** linha de ícones no hero — WhatsApp, Discord, Instagram, Behance, LinkedIn e e-mail.
+- **Sem traços (—):** todo texto visível usa vírgula ou ponto médio (·). Os títulos dos vídeos seguem o padrão "Cliente + tipo de trabalho", sem traço.
 - **SEO/OG:** URLs absolutas apontam para `https://burkemov.vercel.app/` (domínio no ar). `assets/og-image.jpg` mostra 3 frames reais do portfolio.
 
 > ⚠️ **Domínio:** `burkemov.com` **não está registrado** (NXDOMAIN). Enquanto isso, as URLs absolutas do `index.html` (canonical, `og:url`, `og:image`, `twitter:image`, JSON-LD) usam `burkemov.vercel.app`. Se um dia comprar o domínio, troque as 5 ocorrências — se apontarem para um domínio que não existe, **a imagem de preview do link some** (foi exatamente o que acontecia).
@@ -29,7 +36,7 @@ Site/
 
 ## Idioma
 
-O site é **inteiramente em inglês americano** (`lang="en-US"`): textos, títulos dos vídeos, rótulos dos filtros, mensagens pré-preenchidas do WhatsApp, meta tags e a OG image. As âncoras do menu também são em inglês (`#home`, `#work`, `#process`, `#why`, `#faq`) e as chaves de categoria em `PROJECTS` são `ads` / `corporate` / `gaming` / `motion`.
+O site é **inteiramente em inglês americano** (`lang="en-US"`): textos, títulos dos vídeos, rótulos dos filtros, mensagens pré-preenchidas do WhatsApp, meta tags e a OG image. As chaves de categoria em `PROJECTS` são `ads` / `corporate` / `gaming` / `motion`.
 
 Os **comentários do código continuam em português** de propósito — eles são para você manter o site, não aparecem para o visitante.
 
@@ -40,7 +47,8 @@ Os **comentários do código continuam em português** de propósito — eles s�
 - **Thumbnail de vídeo novo:** baixe a capa do Vimeo para `assets/thumbnails/` (ex.: `https://vumbnail.com/ID.jpg`).
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).
-- **Depoimentos:** quando existirem, criar uma seção entre Diferenciais e FAQ.
+- **Foto do hero:** `assets/profile.jpg`, quadrada (1:1) com o rosto centralizado — o CSS a recorta em círculo.
+- **Discord:** o ícone só abre a conversa direto com o `discordUserId` (ID numérico) preenchido em `CONFIG`. Para pegá-lo: Discord > Configurações > Avançado > Modo desenvolvedor, depois botão direito no seu perfil > "Copiar ID do usuário". Enquanto estiver vazio, o clique copia o nome de usuário (`discordUsername`) e mostra um aviso.
 
 ## Rodar localmente
 

@@ -16,8 +16,8 @@ RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DESTINO = os.path.join(RAIZ, "assets", "og-image.jpg")
 
 TITULO = "burke.mov"
-LINHA1 = "Video that turns attention"
-LINHA2 = "into clients."
+LINHA1 = "High-end video editing for"
+LINHA2 = "creators, businesses & labels."
 RODAPE = "5M+ views   ·   17 clients   ·   24h turnaround"
 
 # Frames verticais em destaque (thumbnails do portfolio), da esquerda p/ direita

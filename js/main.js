@@ -12,15 +12,17 @@ const CONFIG = {
   // Formato internacional, só dígitos: 55 (Brasil) + DDD + número
   whatsappNumber: "5543991358713",
 
+  // Discord. O ID numérico é o que permite abrir a conversa direto:
+  // Discord > Configurações > Avançado > Modo desenvolvedor > botão
+  // direito no seu perfil > "Copiar ID do usuário". Enquanto estiver
+  // vazio, o ícone copia o nome de usuário abaixo.
+  discordUserId: "",
+  discordUsername: "burke_mov",
+
   // Mensagem pré-preenchida por contexto (reduz fricção do lead)
   messages: {
     default: "Hi! I saw your website and I'd like to talk about a video project.",
-    nav: "Hi! I came from your website and I'd like to know more about your work.",
     hero: "Hi! I saw your portfolio and I'd like to talk about a project.",
-    portfolio: "Hi! I liked your work and I'd like to get a quote.",
-    final: "Hi! I'd like to get a quote for a video project.",
-    footer: "Hi! I came from your website and I'd like to chat.",
-    float: "Hi! I saw your website and I'd like to talk about a project.",
     modal: "Hi! I saw one of your videos and I want something similar.",
   },
 };
@@ -40,8 +42,8 @@ const CONFIG = {
    ------------------------------------------------------------ */
 const PROJECTS = [
   {
-    title: "Treasure Coast Legal — Brand Film",
-    meta: "Corporate · Law firm — Florida, USA",
+    title: "Treasure Coast Legal Brand Film",
+    meta: "Corporate · Law firm in Florida, USA",
     category: "corporate ads",
     tag: "Corporate",
     vimeoId: "1207932432",
@@ -49,7 +51,7 @@ const PROJECTS = [
     aspect: "16:9",
   },
   {
-    title: "Pilates Studio — Ad",
+    title: "Pilates Studio Ad",
     meta: "Meta Ads · Pilates Studio",
     category: "ads",
     tag: "Meta Ads",
@@ -58,7 +60,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Brand Film",
+    title: "Grupo Axis Brand Film",
     meta: "Corporate · Grupo Axis",
     category: "corporate",
     tag: "Corporate",
@@ -67,7 +69,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Huiós Barbershop — Highlights",
+    title: "Huiós Barbershop Highlights",
     meta: "Meta Ads · Music-synced cuts",
     category: "ads",
     tag: "Meta Ads",
@@ -76,7 +78,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Pixar Car — Motion & VFX",
+    title: "Pixar Car Motion & VFX",
     meta: "Motion Design · Animated eyes on the windshield",
     category: "motion",
     tag: "Motion",
@@ -85,7 +87,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Felipe Barreto — Gaming 01",
+    title: "Felipe Barreto Gaming 01",
     meta: "Gaming · Felipe Barreto",
     category: "gaming",
     tag: "Gaming",
@@ -94,7 +96,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Ad 01",
+    title: "Grupo Axis Ad 01",
     meta: "Meta Ads · Grupo Axis",
     category: "ads",
     tag: "Meta Ads",
@@ -103,7 +105,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Followers Don't Pay the Bills — Motion",
+    title: "Followers Don't Pay the Bills",
     meta: "Motion Design · Bernardo",
     category: "motion",
     tag: "Motion",
@@ -112,7 +114,7 @@ const PROJECTS = [
     aspect: "16:9",
   },
   {
-    title: "Grupo Axis — Corporate Video",
+    title: "Grupo Axis Corporate Video",
     meta: "Corporate · Grupo Axis",
     category: "corporate",
     tag: "Corporate",
@@ -121,7 +123,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Felipe Barreto — Gaming 02",
+    title: "Felipe Barreto Gaming 02",
     meta: "Gaming · Felipe Barreto",
     category: "gaming",
     tag: "Gaming",
@@ -130,7 +132,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Ad 02",
+    title: "Grupo Axis Ad 02",
     meta: "Meta Ads · Grupo Axis",
     category: "ads",
     tag: "Meta Ads",
@@ -139,7 +141,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Grupo Axis — Corporate Video 2",
+    title: "Grupo Axis Corporate Video 2",
     meta: "Corporate · Grupo Axis",
     category: "corporate",
     tag: "Corporate",
@@ -148,7 +150,7 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Felipe Barreto — Gaming 03",
+    title: "Felipe Barreto Gaming 03",
     meta: "Gaming · Felipe Barreto",
     category: "gaming",
     tag: "Gaming",
@@ -349,14 +351,45 @@ function initCursorLight() {
 }
 
 /* ------------------------------------------------------------
-   NAV — sombra ao rolar
+   DISCORD
+   Com discordUserId preenchido, o clique abre o seu perfil no
+   Discord (com o botão "Message"). Sem o ID, o clique copia o
+   usuário e avisa — o Discord não tem link de conversa por
+   nome de usuário, só por ID numérico.
    ------------------------------------------------------------ */
-function initNav() {
-  const nav = document.getElementById("nav");
-  if (!nav) return;
-  const onScroll = () => nav.classList.toggle("is-scrolled", window.scrollY > 8);
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+function toast(msg) {
+  const el = document.getElementById("toast");
+  if (!el) return;
+  el.textContent = msg;
+  el.hidden = false;
+  requestAnimationFrame(() => el.classList.add("is-in"));
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => {
+    el.classList.remove("is-in");
+    setTimeout(() => (el.hidden = true), 400);
+  }, 2600);
+}
+
+function initDiscord() {
+  const el = document.querySelector(".js-discord");
+  if (!el) return;
+
+  if (CONFIG.discordUserId) {
+    el.setAttribute("href", `https://discord.com/users/${CONFIG.discordUserId}`);
+    el.setAttribute("target", "_blank");
+    el.setAttribute("rel", "noopener");
+    return;
+  }
+
+  el.setAttribute("href", `https://discord.com/users/${CONFIG.discordUsername}`);
+  el.addEventListener("click", (e) => {
+    e.preventDefault();
+    const user = CONFIG.discordUsername;
+    navigator.clipboard?.writeText(user).then(
+      () => toast(`Discord username copied: ${user}`),
+      () => toast(`Discord: ${user}`)
+    );
+  });
 }
 
 /* ------------------------------------------------------------
@@ -366,7 +399,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
 renderPortfolio();
 renderFilters();
 initWhatsApp(); // depois do render: pega também os botões criados dinamicamente
+initDiscord();
 initModal();
 initReveal();
 initCursorLight();
-initNav();
