@@ -22,18 +22,14 @@
 
   /* Vidro */
   --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-  --glass-bg-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-blur: 20px;
   --glass-glow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   --hairline: rgba(255, 255, 255, 0.08);
 
-  /* Liquid glass: luz na borda superior + sombra de profundidade.
-     O brilho especular fica no ::before de cada botão. */
+  /* Luz na borda superior dos cards de vidro */
   --lg-inset: inset 0 1px 0 rgba(255, 255, 255, 0.24),
               inset 0 -1px 0 rgba(255, 255, 255, 0.06);
-  --lg-shadow: 0 6px 24px rgba(0, 0, 0, 0.42);
-  --lg-spec: linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 46%);
 
   /* Geometria */
   --radius: 20px;
@@ -206,8 +202,6 @@ button {
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass,
-  .contact,
-  .filter,
   .modal__box {
     background: rgba(20, 20, 23, 0.94);
   }
@@ -287,81 +281,52 @@ button {
   margin-top: clamp(28px, 4vh, 40px);
 }
 
+/* Só a logo: sem círculo, sem vidro. A área de 44px mantém o toque
+   confortável no celular mesmo com o ícone menor. */
 .contact {
   position: relative;
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   display: grid;
   place-items: center;
-  border-radius: 50%;
   color: var(--text-2);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--lg-inset), var(--lg-shadow);
-  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
   transition: transform var(--speed) var(--ease), color var(--speed) var(--ease),
-    border-color var(--speed) var(--ease), background var(--speed) var(--ease),
-    box-shadow var(--speed) var(--ease);
-}
-
-/* Brilho especular do vidro */
-.contact::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--lg-spec);
-  pointer-events: none;
+    opacity var(--speed) var(--ease);
 }
 
 .contact svg {
-  position: relative; /* acima do brilho */
-  width: 20px;
-  height: 20px;
+  width: 27px;
+  height: 27px;
 }
 
 .contact:hover {
   color: var(--text);
-  background: var(--glass-bg-strong);
-  border-color: rgba(255, 255, 255, 0.26);
-  transform: translateY(-3px);
-  box-shadow: var(--lg-inset), 0 12px 30px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px);
 }
 
 .contact:active {
   transform: translateY(-1px) scale(0.96);
 }
 
-/* Contatos do hero: mesmo tamanho, cada um com o vidro e o glow da
-   sua marca já visíveis (não só no hover). */
+/* Contatos principais: logo na cor sólida da marca */
 .contact--discord {
-  color: #c9cfff;
-  background: linear-gradient(135deg, rgba(88, 101, 242, 0.36), rgba(88, 101, 242, 0.14));
-  border-color: rgba(88, 101, 242, 0.5);
-  box-shadow: var(--lg-inset), 0 8px 30px rgba(88, 101, 242, 0.32);
+  color: #5865f2;
 }
 
 .contact--whatsapp {
-  color: #9ff2c2;
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.32), rgba(37, 211, 102, 0.12));
-  border-color: rgba(37, 211, 102, 0.45);
-  box-shadow: var(--lg-inset), 0 8px 30px rgba(37, 211, 102, 0.3);
+  color: #25d366;
 }
 
-/* Hover intensifica o brilho da própria marca */
+.contact--discord:hover,
 .contact--whatsapp:hover {
-  color: #fff;
-  border-color: rgba(37, 211, 102, 0.75);
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.5), rgba(37, 211, 102, 0.24));
-  box-shadow: var(--lg-inset), 0 14px 38px rgba(37, 211, 102, 0.46);
+  filter: brightness(1.25);
 }
 
-.contact--discord:hover {
-  color: #fff;
-  border-color: rgba(88, 101, 242, 0.8);
-  background: linear-gradient(135deg, rgba(88, 101, 242, 0.55), rgba(88, 101, 242, 0.26));
-  box-shadow: var(--lg-inset), 0 14px 38px rgba(88, 101, 242, 0.48);
+/* Texto curto de contato sob os ícones do hero */
+.contacts__note {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: var(--text-3);
 }
 
 /* Rótulo que aparece no hover */
@@ -395,7 +360,6 @@ button {
    7. BOTÃO — usado no rodapé do modal
    ------------------------------------------------------------ */
 .btn {
-  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -406,40 +370,21 @@ button {
   font-weight: 600;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  overflow: hidden;
-  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease),
-    background var(--speed) var(--ease), border-color var(--speed) var(--ease);
+  transition: transform var(--speed) var(--ease), background var(--speed) var(--ease);
 }
 
-/* Brilho especular do vidro */
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--lg-spec);
-  pointer-events: none;
-}
-
-/* Vidro com tingimento roxo do Discord */
+/* Cor sólida do Discord */
 .btn--primary {
-  background: linear-gradient(135deg, rgba(88, 101, 242, 0.44), rgba(88, 101, 242, 0.2));
-  border: 1px solid rgba(88, 101, 242, 0.5);
+  background: #5865f2;
   color: #fff;
-  box-shadow: var(--lg-inset), 0 8px 28px rgba(88, 101, 242, 0.3);
 }
 
 .btn--primary:hover {
-  background: linear-gradient(135deg, rgba(88, 101, 242, 0.6), rgba(88, 101, 242, 0.3));
-  border-color: rgba(88, 101, 242, 0.75);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: var(--lg-inset), 0 12px 38px rgba(88, 101, 242, 0.48);
+  background: #6d78f5;
+  transform: translateY(-2px);
 }
 
 .btn__ico {
-  position: relative; /* acima do brilho */
   width: 1.1em;
   height: 1.1em;
   flex: none;
@@ -453,7 +398,7 @@ button {
    8. PORTFOLIO
    ------------------------------------------------------------ */
 .work {
-  padding-bottom: clamp(72px, 10vh, 120px);
+  padding-bottom: clamp(8px, 1vh, 16px);
 }
 
 .work__filters {
@@ -464,47 +409,29 @@ button {
   margin-bottom: clamp(24px, 3.5vh, 34px);
 }
 
+/* Pílulas compactas, em cor sólida (sem gradiente nem vidro) */
 .filter {
-  position: relative;
-  padding: 0.55em 1.25em;
+  padding: 0.38em 0.92em;
   border-radius: 999px;
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--text-2);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--lg-inset), 0 4px 16px rgba(0, 0, 0, 0.32);
-  overflow: hidden;
-  backdrop-filter: blur(var(--glass-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   transition: color var(--speed) var(--ease), background var(--speed) var(--ease),
-    border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease),
-    transform var(--speed) var(--ease);
-}
-
-/* Brilho especular do vidro */
-.filter::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--lg-spec);
-  pointer-events: none;
+    border-color var(--speed) var(--ease);
 }
 
 .filter:hover {
   color: var(--text);
-  background: var(--glass-bg-strong);
-  border-color: rgba(255, 255, 255, 0.24);
-  transform: translateY(-2px);
+  background: #202026;
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Ativo: mesmo vidro, tingido de azul */
 .filter.is-active {
-  background: linear-gradient(135deg, rgba(10, 132, 255, 0.45), rgba(10, 132, 255, 0.22));
-  border-color: rgba(10, 132, 255, 0.55);
+  background: var(--accent);
+  border-color: transparent;
   color: #fff;
-  box-shadow: var(--lg-inset), 0 6px 26px rgba(10, 132, 255, 0.38);
 }
 
 .filter__count {
@@ -613,27 +540,13 @@ button {
   display: grid;
   place-items: center;
   color: #fff;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07));
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: var(--lg-inset), 0 6px 22px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   opacity: 0.85;
   transition: all var(--speed) var(--ease);
 }
 
-/* Brilho especular do vidro */
-.work-card__play::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--lg-spec);
-  pointer-events: none;
-}
-
 .work-card__play svg {
-  position: relative; /* acima do brilho */
   width: 22px;
   height: 22px;
   margin-left: 3px;
@@ -642,9 +555,8 @@ button {
 .work-card:hover .work-card__play {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);
-  background: linear-gradient(135deg, rgba(10, 132, 255, 0.55), rgba(10, 132, 255, 0.28));
-  border-color: rgba(10, 132, 255, 0.6);
-  box-shadow: var(--lg-inset), 0 8px 30px rgba(10, 132, 255, 0.5);
+  background: var(--accent);
+  border-color: transparent;
 }
 
 .work-card__info {
@@ -661,6 +573,22 @@ button {
   margin-top: 3px;
   font-size: 0.8rem;
   color: var(--text-3);
+}
+
+/* ------------------------------------------------------------
+   8b. CONTATO APÓS OS PROJETOS
+   ------------------------------------------------------------ */
+.outro {
+  text-align: center;
+  padding: clamp(52px, 8vh, 92px) var(--gutter) clamp(48px, 7vh, 84px);
+}
+
+.outro__note {
+  margin-bottom: 18px;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
 }
 
 /* ------------------------------------------------------------
@@ -761,33 +689,18 @@ button {
   display: grid;
   place-items: center;
   color: var(--text);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
-    rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: var(--lg-inset), 0 6px 20px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(14px) saturate(180%);
-  -webkit-backdrop-filter: blur(14px) saturate(180%);
   transition: all var(--speed) var(--ease);
 }
 
-/* Brilho especular do vidro */
-.modal__close::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: var(--lg-spec);
-  pointer-events: none;
-}
-
 .modal__close svg {
-  position: relative; /* acima do brilho */
   width: 18px;
   height: 18px;
 }
 
 .modal__close:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.16);
   transform: scale(1.06);
 }
 
@@ -913,11 +826,6 @@ body.modal-open {
 
   .contacts {
     gap: 10px;
-  }
-
-  .contact {
-    width: 44px;
-    height: 44px;
   }
 
   .modal {
