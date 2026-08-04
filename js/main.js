@@ -28,10 +28,10 @@ const CONFIG = {
 
 /* ------------------------------------------------------------
    PORTFOLIO — vídeos reais (Vimeo).
-   - category: "ads" | "corporate" | "gaming" | "motion"...
+   - category: "corporate" | "gaming" | "motion"...
      Novas categorias podem ser adicionadas (o filtro é gerado
      automaticamente; rótulo em FILTER_LABELS). Um vídeo pode ter
-     mais de uma categoria, separadas por espaço: "corporate ads".
+     mais de uma categoria, separadas por espaço: "corporate motion".
    - aspect: "9:16" (vertical, padrão do grid) ou "16:9"
      (horizontal — vira o banner de destaque de largura total)
    - vídeo: use vimeoId (player do Vimeo) OU mp4 (caminho de um
@@ -43,7 +43,7 @@ const PROJECTS = [
   {
     title: "Treasure Coast Legal Brand Film",
     meta: "Corporate · Law firm in Florida, USA",
-    category: "corporate ads",
+    category: "corporate",
     tag: "Corporate",
     vimeoId: "1207932432",
     thumb: "assets/thumbnails/1207932432.jpg",
@@ -51,9 +51,9 @@ const PROJECTS = [
   },
   {
     title: "Pilates Studio Ad",
-    meta: "Meta Ads · Pilates Studio",
-    category: "ads",
-    tag: "Meta Ads",
+    meta: "Corporate · Pilates Studio",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1206133567",
     thumb: "assets/thumbnails/1206133567.jpg",
     aspect: "9:16",
@@ -69,9 +69,9 @@ const PROJECTS = [
   },
   {
     title: "Huiós Barbershop Highlights",
-    meta: "Meta Ads · Music-synced cuts",
-    category: "ads",
-    tag: "Meta Ads",
+    meta: "Corporate · Music-synced cuts",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1207932259",
     thumb: "assets/thumbnails/1207932259.jpg",
     aspect: "9:16",
@@ -96,18 +96,18 @@ const PROJECTS = [
   },
   {
     title: "Grupo Axis Ad 01",
-    meta: "Meta Ads · Grupo Axis",
-    category: "ads",
-    tag: "Meta Ads",
+    meta: "Corporate · Grupo Axis",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1206133707",
     thumb: "assets/thumbnails/1206133707.jpg",
     aspect: "9:16",
   },
   {
     title: "Followers Don't Pay the Bills",
-    meta: "Motion Design · Bernardo",
-    category: "motion",
-    tag: "Motion",
+    meta: "Corporate · Bernardo",
+    category: "corporate",
+    tag: "Corporate",
     mp4: "assets/videos/bernardo-seguidor-nao-paga-boleto.mp4",
     thumb: "assets/thumbnails/bernardo-seguidor.jpg",
     aspect: "16:9",
@@ -132,9 +132,9 @@ const PROJECTS = [
   },
   {
     title: "Grupo Axis Ad 02",
-    meta: "Meta Ads · Grupo Axis",
-    category: "ads",
-    tag: "Meta Ads",
+    meta: "Corporate · Grupo Axis",
+    category: "corporate",
+    tag: "Corporate",
     vimeoId: "1206133830",
     thumb: "assets/thumbnails/1206133830.jpg",
     aspect: "9:16",
@@ -161,7 +161,6 @@ const PROJECTS = [
 
 const FILTER_LABELS = {
   all: "All",
-  ads: "Meta Ads",
   corporate: "Corporate",
   gaming: "Gaming",
   motion: "Motion",
@@ -226,7 +225,11 @@ function renderFilters() {
     });
   });
 
-  wrap.innerHTML = Object.keys(counts)
+  // A ordem das abas segue FILTER_LABELS; categorias sem rótulo entram no fim.
+  const extras = Object.keys(counts).filter((k) => !(k in FILTER_LABELS));
+  const ordem = [...Object.keys(FILTER_LABELS), ...extras].filter((k) => counts[k]);
+
+  wrap.innerHTML = ordem
     .map(
       (key, i) => `
       <button class="filter${i === 0 ? " is-active" : ""}" type="button" data-filter="${key}">

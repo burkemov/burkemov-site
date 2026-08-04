@@ -26,7 +26,7 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: Corporate 4 · Meta Ads 5 · Gaming 3 · Motion 2 (o TCL aparece em duas categorias — `category` aceita múltiplas, separadas por espaço).
+- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: All 13 · Corporate 9 · Gaming 3 · Motion 1, nessa ordem (a ordem das abas segue `FILTER_LABELS`, não a ordem dos vídeos). `category` aceita múltiplas categorias separadas por espaço.
 - **Contato:** Discord e WhatsApp no hero, mesmo tamanho e cada um com o vidro e o glow da sua marca (Discord primeiro, como principal); Instagram, Behance, LinkedIn e e-mail no rodapé. O CTA dentro do player de vídeo também é Discord.
 - **Sem traços (—):** todo texto visível usa vírgula ou ponto médio (·). Os títulos dos vídeos seguem o padrão "Cliente + tipo de trabalho", sem traço.
 - **SEO/OG:** URLs absolutas apontam para `https://burkemov.vercel.app/` (domínio no ar). `assets/og-image.jpg` mostra 3 frames reais do portfolio.
