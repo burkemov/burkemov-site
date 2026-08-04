@@ -167,8 +167,10 @@ const FILTER_LABELS = {
   motion: "Motion",
 };
 
+// Triângulo centrado no viewBox (bbox 7→18) com o leve empurrão à
+// direita que todo botão de play precisa para parecer centralizado.
 const PLAY_ICON =
-  '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l11-7z"/></svg>';
 
 /* ------------------------------------------------------------
    WHATSAPP
