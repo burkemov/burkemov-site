@@ -308,12 +308,39 @@ button {
   transform: translateY(-1px) scale(0.96);
 }
 
-/* Contatos principais: logo branca (o hover genérico escureceria) */
+/* Contatos principais: logo branca e maior que as do rodapé
+   (o hover genérico as escureceria) */
 .contact--discord,
 .contact--whatsapp,
 .contact--discord:hover,
 .contact--whatsapp:hover {
   color: #fff;
+}
+
+.contact--discord,
+.contact--whatsapp {
+  width: 52px;
+  height: 52px;
+}
+
+.contact--discord svg,
+.contact--whatsapp svg {
+  width: 36px;
+  height: 36px;
+}
+
+/* Chamada acima das logos */
+.contacts__label {
+  margin-top: clamp(28px, 4vh, 40px);
+  margin-bottom: 12px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-2);
+}
+
+.contacts__label + .contacts {
+  margin-top: 0;
 }
 
 /* Texto curto de contato sob os ícones do hero */
