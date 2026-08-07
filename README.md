@@ -29,7 +29,7 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 8 vídeos do Vimeo — 7 verticais 9:16 + Treasure Coast Legal (16:9) como banner que abre a grade. `assets/videos/` está vazio: nenhum MP4 hospedado no momento (o campo `mp4` continua suportado).
+- **Portfolio:** 9 vídeos do Vimeo — 8 verticais 9:16 + Treasure Coast Legal (16:9) como banner que abre a grade. `assets/videos/` está vazio: nenhum MP4 hospedado no momento (o campo `mp4` continua suportado).
 - **Contato:** Discord e WhatsApp aparecem duas vezes (hero e bloco após os projetos), como logos brancas sem círculo, cada um com uma frase curta diferente; Instagram, Behance, LinkedIn e e-mail no rodapé. O CTA dentro do player de vídeo também é Discord.
 - **Sem traços (—):** todo texto visível usa vírgula ou ponto médio (·). Os títulos dos vídeos seguem o padrão "Cliente + tipo de trabalho", sem traço.
 - **SEO/OG:** URLs absolutas apontam para `https://burkemov.vercel.app/` (domínio no ar). `assets/og-image.jpg` mostra 3 frames reais do portfolio.
@@ -50,6 +50,7 @@ Os **comentários do código continuam em português** de propósito — eles s�
 - **Thumbnail de vídeo novo:** baixe a capa do Vimeo para `assets/thumbnails/` (ex.: `https://vumbnail.com/ID.jpg`).
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).
+- **Capa escura:** o Vimeo escolhe o frame de capa sozinho e às vezes pega um momento escuro, o que faz o card parecer vazio. `tools/clarear-capas.py` levanta as sombras por gama nas capas abaixo do limite. Para capas quase pretas o script não faz milagre: o certo é definir outro frame de capa no próprio Vimeo.
 - **Foto do hero:** `assets/profile.jpg`, quadrada (1:1) com o rosto centralizado — o CSS a recorta em círculo.
 - **Discord:** `CONFIG.discordUserId` (`497121311626231812`) faz o ícone abrir o perfil direto, com o botão "Message". Se esse campo for esvaziado, o clique volta a copiar o `discordUsername` e mostrar um aviso — o Discord não tem URL de conversa por nome de usuário, só por ID numérico.
 

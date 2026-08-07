@@ -76,6 +76,15 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
+    title: "Pilates Studio Ad",
+    meta: "Short Form · Paid ad creative",
+    category: "shortform",
+    tag: "Short Form",
+    vimeoId: "1206133567",
+    thumb: "assets/thumbnails/1206133567.jpg",
+    aspect: "9:16",
+  },
+  {
     title: "Pixar Car Motion & VFX",
     meta: "Motion Design · Animated eyes on the windshield",
     category: "motion",
