@@ -122,6 +122,13 @@ const PROJECTS = [
   },
 ];
 
+/* Cache das imagens.
+   As capas são trocadas mantendo o mesmo nome de arquivo, então o
+   navegador que já guardou a versão antiga continuaria mostrando ela.
+   Este sufixo muda a URL e força o download da nova.
+   >>> Suba este número toda vez que substituir uma capa. <<< */
+const ASSET_VERSION = "2";
+
 // Triângulo centrado no viewBox (bbox 7→18) com o leve empurrão à
 // direita que todo botão de play precisa para parecer centralizado.
 const PLAY_ICON =
@@ -150,15 +157,12 @@ function renderPortfolio() {
   const grid = document.getElementById("workGrid");
   if (!grid) return;
 
-  const card = (p, i, clone) => {
+  grid.innerHTML = PROJECTS.map((p, i) => {
     const wide = p.aspect === "16:9" ? " work-card--wide" : "";
-    // A cópia existe só para o laço não ter emenda visível: fica fora
-    // da navegação por teclado e dos leitores de tela.
     return `
-      <article class="work-card${wide}"${clone ? ' aria-hidden="true"' : ""}>
-        <button class="work-card__media" type="button" data-index="${i}"
-                ${clone ? 'tabindex="-1"' : ""} aria-label="Watch: ${p.title}">
-          <img src="${p.thumb}" alt="${clone ? "" : p.title}" loading="lazy" decoding="async" />
+      <article class="work-card reveal${wide}">
+        <button class="work-card__media" type="button" data-index="${i}" aria-label="Watch: ${p.title}">
+          <img src="${p.thumb}?v=${ASSET_VERSION}" alt="${p.title}" loading="lazy" decoding="async" />
           <span class="work-card__play" aria-hidden="true">${PLAY_ICON}</span>
           <span class="work-card__info">
             <span class="work-card__cat">${p.tag}</span>
@@ -166,11 +170,7 @@ function renderPortfolio() {
           </span>
         </button>
       </article>`;
-  };
-
-  const original = PROJECTS.map((p, i) => card(p, i, false)).join("");
-  const copia = PROJECTS.map((p, i) => card(p, i, true)).join("");
-  grid.innerHTML = original + copia;
+  }).join("");
 
   grid.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-index]");
