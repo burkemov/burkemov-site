@@ -85,12 +85,12 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Pixar Car Motion & VFX",
-    meta: "Motion Design · Animated eyes on the windshield",
-    category: "motion",
-    tag: "Motion",
-    vimeoId: "1210391135",
-    thumb: "assets/thumbnails/1210391135.jpg",
+    title: "Fernes Product Ad",
+    meta: "Short Form · Supplement brand",
+    category: "shortform",
+    tag: "Short Form",
+    vimeoId: "1216438856",
+    thumb: "assets/thumbnails/1216438856.jpg",
     aspect: "9:16",
   },
   {
@@ -127,7 +127,7 @@ const PROJECTS = [
    navegador que já guardou a versão antiga continuaria mostrando ela.
    Este sufixo muda a URL e força o download da nova.
    >>> Suba este número toda vez que substituir uma capa. <<< */
-const ASSET_VERSION = "2";
+const ASSET_VERSION = "3";
 
 // Triângulo centrado no viewBox (bbox 7→18) com o leve empurrão à
 // direita que todo botão de play precisa para parecer centralizado.

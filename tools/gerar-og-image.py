@@ -23,7 +23,7 @@ RODAPE = "5M+ views   ·   17 clients   ·   24h turnaround"
 # Frames verticais em destaque (thumbnails do portfolio), da esquerda p/ direita
 FRAMES = [
     "assets/thumbnails/1207932432.jpg",  # Treasure Coast Legal (claro, cliente EUA)
-    "assets/thumbnails/1210391135.jpg",  # Pixar Car
+    "assets/thumbnails/1216438856.jpg",  # Fernes Product Ad
     "assets/thumbnails/1216324396.jpg",  # Millionaire Saturdays
 ]
 
