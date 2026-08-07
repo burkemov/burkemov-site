@@ -24,7 +24,7 @@ RODAPE = "5M+ views   ·   17 clients   ·   24h turnaround"
 FRAMES = [
     "assets/thumbnails/1207932432.jpg",  # Treasure Coast Legal (claro, cliente EUA)
     "assets/thumbnails/1210391135.jpg",  # Pixar Car
-    "assets/thumbnails/1206133930.jpg",  # Gaming
+    "assets/thumbnails/1216324396.jpg",  # Millionaire Saturdays
 ]
 
 

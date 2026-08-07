@@ -29,7 +29,7 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Sem filtros na página: `category` continua no dado apenas como metadado e `tag` vira o rótulo curto sobre a miniatura.
+- **Portfolio:** 8 vídeos do Vimeo — 7 verticais 9:16 + Treasure Coast Legal (16:9) como banner que abre a grade. `assets/videos/` está vazio: nenhum MP4 hospedado no momento (o campo `mp4` continua suportado).
 - **Contato:** Discord e WhatsApp aparecem duas vezes (hero e bloco após os projetos), como logos brancas sem círculo, cada um com uma frase curta diferente; Instagram, Behance, LinkedIn e e-mail no rodapé. O CTA dentro do player de vídeo também é Discord.
 - **Sem traços (—):** todo texto visível usa vírgula ou ponto médio (·). Os títulos dos vídeos seguem o padrão "Cliente + tipo de trabalho", sem traço.
 - **SEO/OG:** URLs absolutas apontam para `https://burkemov.vercel.app/` (domínio no ar). `assets/og-image.jpg` mostra 3 frames reais do portfolio.
