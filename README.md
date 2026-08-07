@@ -4,8 +4,11 @@ Site single-page para **@burke_mov** (Davi Burke), editor de vídeo.
 Layout minimalista centrado (foto redonda, título, descrição, contatos) sobre estética
 **Apple Liquid Glass Dark**. HTML/CSS/JS puro, sem build, pronto para deploy.
 
-**Página = hero + portfolio + rodapé.** Não há menu, métricas, processo, diferenciais nem FAQ:
-tudo isso foi removido de propósito para nada competir com os vídeos.
+**Página = hero + portfolio + rodapé.** Não há menu, métricas, processo, diferenciais, FAQ
+nem filtros de categoria: tudo removido de propósito para nada competir com os vídeos.
+
+Hero: identidade discreta (foto pequena + `burke.mov` numa pílula), headline em duas partes
+(contexto apagado + promessa em destaque), descrição, "Contact now" e os dois contatos.
 
 ## Estrutura
 
@@ -26,7 +29,7 @@ Site/
 
 - **WhatsApp:** `5543991358713` — em `CONFIG.whatsappNumber` (`js/main.js`). Fonte única: todos os botões usam.
 - **Métricas:** +5M views · 17 clientes · entrega média 24h.
-- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Filtros: All 13 · Corporate 9 · Gaming 3 · Motion 1, nessa ordem (a ordem das abas segue `FILTER_LABELS`, não a ordem dos vídeos). `category` aceita múltiplas categorias separadas por espaço.
+- **Portfolio:** 13 vídeos — 11 verticais 9:16 + 2 banners 16:9 (Treasure Coast Legal e "Followers Don't Pay the Bills", este hospedado como MP4 no próprio site em `assets/videos/`). Sem filtros na página: `category` continua no dado apenas como metadado e `tag` vira o rótulo curto sobre a miniatura.
 - **Contato:** Discord e WhatsApp aparecem duas vezes (hero e bloco após os projetos), como logos brancas sem círculo, cada um com uma frase curta diferente; Instagram, Behance, LinkedIn e e-mail no rodapé. O CTA dentro do player de vídeo também é Discord.
 - **Sem traços (—):** todo texto visível usa vírgula ou ponto médio (·). Os títulos dos vídeos seguem o padrão "Cliente + tipo de trabalho", sem traço.
 - **SEO/OG:** URLs absolutas apontam para `https://burkemov.vercel.app/` (domínio no ar). `assets/og-image.jpg` mostra 3 frames reais do portfolio.
@@ -43,7 +46,7 @@ Os **comentários do código continuam em português** de propósito — eles s�
 ## Como editar
 
 - **Número/mensagens do WhatsApp:** `CONFIG` no topo de `js/main.js`.
-- **Adicionar vídeo:** nova entrada em `PROJECTS` (`js/main.js`). Campos: `title`, `meta`, `category`, `tag`, `vimeoId` **ou** `mp4` (caminho de um arquivo em `assets/videos/` — comprima antes: `avconvert -p Preset1280x720 -s origem.mp4 -o destino.mp4`; manter abaixo de ~50 MB), `thumb`, `aspect` (`"9:16"` é o padrão do grid; `"16:9"` vira banner de destaque de largura total). Filtros e contadores são gerados automaticamente; para uma categoria nova, adicione o rótulo em `FILTER_LABELS`.
+- **Adicionar vídeo:** nova entrada em `PROJECTS` (`js/main.js`). Campos: `title`, `meta`, `category`, `tag`, `vimeoId` **ou** `mp4` (caminho de um arquivo em `assets/videos/` — comprima antes: `avconvert -p Preset1280x720 -s origem.mp4 -o destino.mp4`; manter abaixo de ~50 MB), `thumb`, `aspect` (`"9:16"` é o padrão do grid; `"16:9"` vira banner de destaque de largura total). Os dois banners 16:9 ficam nos dois primeiros índices de propósito: em qualquer outra posição eles empurram os cards e deixam célula vazia no meio da grade.
 - **Thumbnail de vídeo novo:** baixe a capa do Vimeo para `assets/thumbnails/` (ex.: `https://vumbnail.com/ID.jpg`).
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).

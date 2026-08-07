@@ -65,10 +65,16 @@
   <main>
     <!-- ============ HERO ============ -->
     <header class="hero">
-      <img class="avatar reveal" src="assets/profile.jpg" width="512" height="512"
-           alt="Davi Burke" fetchpriority="high" />
+      <div class="identity reveal">
+        <img class="identity__photo" src="assets/profile.jpg" width="512" height="512"
+             alt="Davi Burke" fetchpriority="high" />
+        <span class="identity__name">burke<span>.mov</span></span>
+      </div>
 
-      <h1 class="hero__title reveal">Video editor</h1>
+      <h1 class="hero__title reveal">
+        <span class="hero__title-lead">Video editing that</span>
+        <span class="hero__title-key">keeps people watching</span>
+      </h1>
 
       <p class="hero__sub reveal">
         High-end video editing for content creators, businesses &amp; labels.
@@ -93,7 +99,6 @@
     <!-- ============ PORTFOLIO ============ -->
     <section class="work" id="work" aria-label="Selected work">
       <div class="container">
-        <div class="work__filters reveal" role="tablist" aria-label="Filter by category" id="workFilters"></div>
         <div class="work__grid" id="workGrid"></div>
       </div>
     </section>

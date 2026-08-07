@@ -29,10 +29,8 @@ const CONFIG = {
 
 /* ------------------------------------------------------------
    PORTFOLIO — vídeos reais (Vimeo).
-   - category: "corporate" | "gaming" | "motion"...
-     Novas categorias podem ser adicionadas (o filtro é gerado
-     automaticamente; rótulo em FILTER_LABELS). Um vídeo pode ter
-     mais de uma categoria, separadas por espaço: "corporate motion".
+   - tag: rótulo curto exibido sobre a miniatura (ex.: "Corporate").
+   - category: mantido como metadado; não há mais filtros na página.
    - aspect: "9:16" (vertical, padrão do grid) ou "16:9"
      (horizontal — vira o banner de destaque de largura total)
    - vídeo: use vimeoId (player do Vimeo) OU mp4 (caminho de um
@@ -48,6 +46,15 @@ const PROJECTS = [
     tag: "Corporate",
     vimeoId: "1207932432",
     thumb: "assets/thumbnails/1207932432.jpg",
+    aspect: "16:9",
+  },
+  {
+    title: "Followers Don't Pay the Bills",
+    meta: "Corporate · Bernardo",
+    category: "corporate",
+    tag: "Corporate",
+    mp4: "assets/videos/bernardo-seguidor-nao-paga-boleto.mp4",
+    thumb: "assets/thumbnails/bernardo-seguidor.jpg",
     aspect: "16:9",
   },
   {
@@ -105,15 +112,6 @@ const PROJECTS = [
     aspect: "9:16",
   },
   {
-    title: "Followers Don't Pay the Bills",
-    meta: "Corporate · Bernardo",
-    category: "corporate",
-    tag: "Corporate",
-    mp4: "assets/videos/bernardo-seguidor-nao-paga-boleto.mp4",
-    thumb: "assets/thumbnails/bernardo-seguidor.jpg",
-    aspect: "16:9",
-  },
-  {
     title: "Huiós Barbershop Highlights",
     meta: "Corporate · Music-synced cuts",
     category: "corporate",
@@ -160,13 +158,6 @@ const PROJECTS = [
   },
 ];
 
-const FILTER_LABELS = {
-  all: "All",
-  corporate: "Corporate",
-  gaming: "Gaming",
-  motion: "Motion",
-};
-
 // Triângulo centrado no viewBox (bbox 7→18) com o leve empurrão à
 // direita que todo botão de play precisa para parecer centralizado.
 const PLAY_ICON =
@@ -198,61 +189,21 @@ function renderPortfolio() {
   grid.innerHTML = PROJECTS.map((p, i) => {
     const wide = p.aspect === "16:9" ? " work-card--wide" : "";
     return `
-      <article class="work-card glass glass--light reveal${wide}" data-category="${p.category}">
+      <article class="work-card reveal${wide}">
         <button class="work-card__media" type="button" data-index="${i}" aria-label="Watch: ${p.title}">
           <img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" />
-          <span class="work-card__tag">${p.tag}</span>
           <span class="work-card__play" aria-hidden="true">${PLAY_ICON}</span>
+          <span class="work-card__info">
+            <span class="work-card__cat">${p.tag}</span>
+            <span class="work-card__title">${p.title}</span>
+          </span>
         </button>
-        <div class="work-card__info">
-          <h3 class="work-card__title">${p.title}</h3>
-          <p class="work-card__meta">${p.meta}</p>
-        </div>
       </article>`;
   }).join("");
 
   grid.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-index]");
     if (trigger) openModal(Number(trigger.dataset.index), trigger);
-  });
-}
-
-function renderFilters() {
-  const wrap = document.getElementById("workFilters");
-  if (!wrap) return;
-
-  const counts = { all: PROJECTS.length };
-  PROJECTS.forEach((p) => {
-    p.category.split(" ").forEach((c) => {
-      counts[c] = (counts[c] || 0) + 1;
-    });
-  });
-
-  // A ordem das abas segue FILTER_LABELS; categorias sem rótulo entram no fim.
-  const extras = Object.keys(counts).filter((k) => !(k in FILTER_LABELS));
-  const ordem = [...Object.keys(FILTER_LABELS), ...extras].filter((k) => counts[k]);
-
-  wrap.innerHTML = ordem
-    .map(
-      (key, i) => `
-      <button class="filter${i === 0 ? " is-active" : ""}" type="button" data-filter="${key}">
-        ${FILTER_LABELS[key] || key}<span class="filter__count">${counts[key]}</span>
-      </button>`
-    )
-    .join("");
-
-  wrap.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-filter]");
-    if (!btn) return;
-
-    wrap.querySelectorAll(".filter").forEach((f) => f.classList.remove("is-active"));
-    btn.classList.add("is-active");
-
-    const key = btn.dataset.filter;
-    document.querySelectorAll(".work-card").forEach((card) => {
-      const cats = card.dataset.category.split(" ");
-      card.classList.toggle("is-hidden", key !== "all" && !cats.includes(key));
-    });
   });
 }
 
@@ -401,7 +352,6 @@ function initDiscord() {
    ------------------------------------------------------------ */
 document.getElementById("year").textContent = new Date().getFullYear();
 renderPortfolio();
-renderFilters();
 initWhatsApp(); // depois do render: pega também os botões criados dinamicamente
 initDiscord();
 initModal();
