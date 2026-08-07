@@ -150,12 +150,15 @@ function renderPortfolio() {
   const grid = document.getElementById("workGrid");
   if (!grid) return;
 
-  grid.innerHTML = PROJECTS.map((p, i) => {
+  const card = (p, i, clone) => {
     const wide = p.aspect === "16:9" ? " work-card--wide" : "";
+    // A cópia existe só para o laço não ter emenda visível: fica fora
+    // da navegação por teclado e dos leitores de tela.
     return `
-      <article class="work-card reveal${wide}">
-        <button class="work-card__media" type="button" data-index="${i}" aria-label="Watch: ${p.title}">
-          <img src="${p.thumb}" alt="${p.title}" loading="lazy" decoding="async" />
+      <article class="work-card${wide}"${clone ? ' aria-hidden="true"' : ""}>
+        <button class="work-card__media" type="button" data-index="${i}"
+                ${clone ? 'tabindex="-1"' : ""} aria-label="Watch: ${p.title}">
+          <img src="${p.thumb}" alt="${clone ? "" : p.title}" loading="lazy" decoding="async" />
           <span class="work-card__play" aria-hidden="true">${PLAY_ICON}</span>
           <span class="work-card__info">
             <span class="work-card__cat">${p.tag}</span>
@@ -163,7 +166,11 @@ function renderPortfolio() {
           </span>
         </button>
       </article>`;
-  }).join("");
+  };
+
+  const original = PROJECTS.map((p, i) => card(p, i, false)).join("");
+  const copia = PROJECTS.map((p, i) => card(p, i, true)).join("");
+  grid.innerHTML = original + copia;
 
   grid.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-index]");

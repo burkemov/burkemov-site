@@ -454,20 +454,46 @@ button {
   padding-bottom: clamp(8px, 1vh, 16px);
 }
 
-/* Grade mais compacta: cards menores e bem próximos, como na referência */
-.work .container {
-  max-width: 1040px;
+/* Carrossel: a faixa anda sozinha e para quando o cursor entra ou
+   quando um card recebe foco pelo teclado. */
+.marquee {
+  overflow: hidden;
+  /* Esmaece as pontas para o corte não parecer abrupto */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
 }
 
-.work__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.marquee__track {
+  display: flex;
   gap: 12px;
+  width: max-content;
+  animation: marquee 64s linear infinite;
+}
+
+/* Metade da faixa é cópia; o deslocamento desconta meia lacuna para
+   o laço fechar sem emenda. */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(calc(-50% - 6px), 0, 0); }
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+/* Só o foco por teclado pausa. Com :focus-within, fechar o modal
+   devolvia o foco ao card e a faixa ficava parada sem motivo.
+   Regra separada de propósito: navegador sem :has ignora só esta. */
+.marquee:has(:focus-visible) .marquee__track {
+  animation-play-state: paused;
 }
 
 .work-card {
-  overflow: hidden;
+  position: relative;
+  flex: none;
+  height: clamp(230px, 34vh, 360px);
   border-radius: 14px;
+  overflow: hidden;
   transition: transform var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
 }
 
@@ -476,29 +502,19 @@ button {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
 }
 
+/* A altura é fixa; a proporção define a largura de cada card */
 .work-card__media {
   position: relative;
   display: block;
-  width: 100%;
+  height: 100%;
   aspect-ratio: 9 / 16;
   overflow: hidden;
   background: var(--bg-raise);
   border-radius: inherit;
 }
 
-/* Destaque horizontal (16:9): banner de largura total abrindo a grade */
-.work-card--wide {
-  grid-column: 1 / -1;
-}
-
 .work-card--wide .work-card__media {
   aspect-ratio: 16 / 9;
-}
-
-@media (min-width: 1020px) {
-  .work-card--wide .work-card__media {
-    aspect-ratio: 2.4 / 1; /* corte cinematográfico no desktop */
-  }
 }
 
 .work-card__media img {
@@ -552,14 +568,6 @@ button {
   color: #fff;
 }
 
-.work-card--wide .work-card__info {
-  padding: 18px 20px 20px;
-}
-
-.work-card--wide .work-card__title {
-  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
-}
-
 .work-card__play {
   position: absolute;
   z-index: 2;
@@ -588,16 +596,6 @@ button {
   transform: translate(-50%, -50%) scale(1);
   background: var(--accent);
   border-color: transparent;
-}
-
-.work-card--wide .work-card__play {
-  width: 58px;
-  height: 58px;
-}
-
-.work-card--wide .work-card__play svg {
-  width: 22px;
-  height: 22px;
 }
 
 /* ------------------------------------------------------------
@@ -817,17 +815,21 @@ body.modal-open {
     opacity: 1;
     transform: none;
   }
+
+  /* Sem movimento automático: a faixa vira um carrossel de rolagem */
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .marquee__track {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* ------------------------------------------------------------
    14. RESPONSIVO
    ------------------------------------------------------------ */
-@media (max-width: 1020px) {
-  .work__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 760px) {
   :root {
     --glass-blur: 14px; /* blur mais leve = melhor performance em mobile */
@@ -840,17 +842,7 @@ body.modal-open {
   }
 }
 
-@media (max-width: 760px) {
-  .work__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 560px) {
-  .work-card__media {
-    max-height: 74svh; /* card vertical não passa da altura da tela */
-  }
-
   .contacts {
     gap: 10px;
   }

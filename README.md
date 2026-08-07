@@ -4,7 +4,7 @@ Site single-page para **@burke_mov** (Davi Burke), editor de vídeo.
 Layout minimalista centrado (foto redonda, título, descrição, contatos) sobre estética
 **Apple Liquid Glass Dark**. HTML/CSS/JS puro, sem build, pronto para deploy.
 
-**Página = hero + portfolio + rodapé.** Não há menu, métricas, processo, diferenciais, FAQ
+**Página = hero + carrossel de vídeos + rodapé.** Não há menu, métricas, processo, diferenciais, FAQ
 nem filtros de categoria: tudo removido de propósito para nada competir com os vídeos.
 
 Hero: identidade discreta (foto pequena + `burke.mov` numa pílula), headline em duas partes
@@ -50,6 +50,7 @@ Os **comentários do código continuam em português** de propósito — eles s�
 - **Thumbnail de vídeo novo:** baixe a capa do Vimeo para `assets/thumbnails/` (ex.: `https://vumbnail.com/ID.jpg`).
 - **Cor de acento:** `--accent` em `css/styles.css` (`:root`). O verde dos CTAs de WhatsApp é `--wa`.
 - **OG image:** se mudar métricas/slogan, regenere com `tools/gerar-og-image.py` (instruções no topo do script).
+- **Carrossel:** os cards ficam numa faixa que anda sozinha (`.marquee`). O JS renderiza a lista duas vezes: a segunda metade é cópia (`aria-hidden`, fora do teclado) só para o laço não ter emenda. O deslocamento é `-50% - 6px`, ou seja, metade da faixa menos meia lacuna. Se mudar o `gap`, ajuste esses 6px para metade do novo valor.
 - **Capa escura:** o Vimeo escolhe o frame de capa sozinho e às vezes pega um momento escuro, o que faz o card parecer vazio. `tools/clarear-capas.py` levanta as sombras por gama nas capas abaixo do limite. Para capas quase pretas o script não faz milagre: o certo é definir outro frame de capa no próprio Vimeo.
 - **Foto do hero:** `assets/profile.jpg`, quadrada (1:1) com o rosto centralizado — o CSS a recorta em círculo.
 - **Discord:** `CONFIG.discordUserId` (`497121311626231812`) faz o ícone abrir o perfil direto, com o botão "Message". Se esse campo for esvaziado, o clique volta a copiar o `discordUsername` e mostrar um aviso — o Discord não tem URL de conversa por nome de usuário, só por ID numérico.
