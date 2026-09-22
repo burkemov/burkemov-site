@@ -127,7 +127,7 @@ const PROJECTS = [
    navegador que já guardou a versão antiga continuaria mostrando ela.
    Este sufixo muda a URL e força o download da nova.
    >>> Suba este número toda vez que substituir uma capa. <<< */
-const ASSET_VERSION = "3";
+const ASSET_VERSION = "4";
 
 // Triângulo centrado no viewBox (bbox 7→18) com o leve empurrão à
 // direita que todo botão de play precisa para parecer centralizado.
@@ -190,6 +190,11 @@ function openModal(index, trigger) {
   const p = PROJECTS[index];
   if (!p || !modal) return;
 
+  // Reabrir durante a saída cancela o fechamento em vez de esperar
+  clearTimeout(closeTimer);
+  closeTimer = null;
+  modal.classList.remove("is-closing");
+
   lastFocused = trigger || document.activeElement;
   modal.querySelector(".modal__box").classList.toggle("modal__box--vertical", p.aspect === "9:16");
   modalTitle.textContent = p.title;
@@ -206,12 +211,31 @@ function openModal(index, trigger) {
   modal.querySelector(".modal__close").focus();
 }
 
-function closeModal() {
-  if (!modal || modal.hidden) return;
+let closeTimer = null;
+
+/* Só esconde o modal depois que a animação de saída termina.
+   A guarda existe porque o ouvinte de animationend pode sobreviver a um
+   reabrir: sem ela, a animação de ENTRADA do modal reaberto disparava
+   este fecho e o modal sumia sozinho. */
+function finishClose() {
+  if (!modal || !modal.classList.contains("is-closing")) return;
+  clearTimeout(closeTimer);
+  closeTimer = null;
+  modal.classList.remove("is-closing");
   modal.hidden = true;
   modalPlayer.innerHTML = ""; // derruba o player e o áudio
   document.body.classList.remove("modal-open");
   if (lastFocused) lastFocused.focus();
+}
+
+function closeModal() {
+  if (!modal || modal.hidden || modal.classList.contains("is-closing")) return;
+  modal.classList.add("is-closing");
+  // animationend é o caminho normal; o timer cobre o caso de ele não vir
+  closeTimer = setTimeout(finishClose, 320);
+  modal
+    .querySelector(".modal__box")
+    .addEventListener("animationend", finishClose, { once: true });
 }
 
 function initModal() {

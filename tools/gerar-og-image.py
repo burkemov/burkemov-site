@@ -10,7 +10,7 @@ import os
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 W, H = 1200, 630
-ACCENT = (10, 132, 255)
+ACCENT = (240, 78, 42)
 
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 DESTINO = os.path.join(RAIZ, "assets", "og-image.jpg")
@@ -62,9 +62,9 @@ title_f = find_font("Bold", 92)
 sub_f = find_font("Regular", 38)
 small_f = find_font("Medium", 24)
 
-img = Image.new("RGB", (W, H), (0, 0, 0))
+img = Image.new("RGB", (W, H), (8, 8, 15))  # mesmo --bg do site
 
-# Brilho azul radial no topo
+# Brilho quente radial no topo (acento da paleta)
 g = ImageOps.invert(Image.radial_gradient("L")).resize((1900, 1150))
 g = g.point(lambda v: int((v / 255) ** 2.2 * 70))  # falloff suave
 img.paste(Image.new("RGB", g.size, ACCENT), (600 - 950, -820), mask=g)

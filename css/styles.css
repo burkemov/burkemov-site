@@ -7,18 +7,18 @@
    1. TOKENS
    ------------------------------------------------------------ */
 :root {
-  /* Cores */
-  --bg: #000000;
-  --bg-raise: #0a0a0c;
-  --text: #f5f5f7;
-  --text-2: rgba(255, 255, 255, 0.62);
-  --text-3: rgba(255, 255, 255, 0.4);
+  /* Cores — paleta quente sobre base fria, tirada da referência:
+     luz laranja/vermelha atravessando um fundo quase preto azulado. */
+  --bg: #08080f;
+  --bg-raise: #12101a;
+  --text: #f6f4f7;
+  --text-2: rgba(255, 255, 255, 0.66);
+  --text-3: rgba(255, 255, 255, 0.5);
 
-  /* Acento único — azul-elétrico iOS */
-  --accent: #0a84ff;
-
-  /* Verde do WhatsApp — mantido reconhecível de propósito */
-  --wa: #25d366;
+  /* Acento único nos controles; os dois abaixo só compõem gradientes */
+  --accent: #f04e2a;
+  --accent-soft: #f5854a;
+  --accent-deep: #c41c63;
 
   /* Vidro */
   --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
@@ -39,6 +39,8 @@
   /* Movimento */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --speed: 350ms;
+  /* O aperto tem que ser quase instantâneo; a volta pode ser suave */
+  --press: 110ms;
 
   /* Tipografia */
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
@@ -114,7 +116,7 @@ button {
   z-index: -1;
   overflow: hidden;
   background:
-    radial-gradient(1100px 700px at 50% -15%, rgba(10, 132, 255, 0.08), transparent 62%),
+    radial-gradient(1100px 700px at 50% -15%, rgba(240, 78, 42, 0.1), transparent 62%),
     var(--bg);
 }
 
@@ -139,14 +141,15 @@ button {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Feixe azul que atravessa o fundo lentamente */
+/* Feixe quente que atravessa o fundo lentamente, do laranja ao magenta
+   — é a luz da referência passando pelo fundo escuro */
 .bg__beam {
   position: absolute;
   top: -30%;
   left: 0;
   width: 62vw;
   height: 160vh;
-  background: radial-gradient(closest-side, rgba(10, 132, 255, 0.17), transparent 72%);
+  background: radial-gradient(closest-side, rgba(240, 78, 42, 0.2), rgba(196, 28, 99, 0.09) 55%, transparent 74%);
   filter: blur(70px);
   will-change: transform;
   animation: sweep 30s ease-in-out infinite alternate;
@@ -169,7 +172,7 @@ button {
   height: 520px;
   top: -200px;
   left: 12%;
-  background: radial-gradient(circle, rgba(10, 132, 255, 0.12), transparent 65%);
+  background: radial-gradient(circle, rgba(245, 133, 74, 0.14), transparent 65%);
   animation: drift 28s var(--ease) infinite alternate;
 }
 
@@ -178,7 +181,7 @@ button {
   height: 460px;
   top: 22%;
   right: -140px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.045), transparent 65%);
+  background: radial-gradient(circle, rgba(196, 28, 99, 0.13), transparent 65%);
   animation: drift 36s var(--ease) infinite alternate-reverse;
 }
 
@@ -284,8 +287,9 @@ button {
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* A luz quente da paleta cai no fim da linha, como na referência */
 .hero__title-key {
-  background: linear-gradient(180deg, #ffffff 58%, rgba(255, 255, 255, 0.66));
+  background: linear-gradient(180deg, #ffffff 46%, #f9a278 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -338,6 +342,7 @@ button {
 
 .contact:active {
   transform: translateY(-1px) scale(0.96);
+  transition-duration: var(--press);
 }
 
 /* Contatos principais: logo branca e maior que as do rodapé
@@ -421,19 +426,20 @@ button {
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0; /* texto pequeno não leva tracking negativo */
   white-space: nowrap;
   transition: transform var(--speed) var(--ease), background var(--speed) var(--ease);
 }
 
-/* Cor sólida do Discord */
+/* Acento da paleta. O texto é escuro de propósito: branco sobre este
+   laranja dá 3,6:1 e reprovaria no contraste mínimo para texto. */
 .btn--primary {
-  background: #5865f2;
-  color: #fff;
+  background: var(--accent);
+  color: #1b0805;
 }
 
 .btn--primary:hover {
-  background: #6d78f5;
+  background: var(--accent-soft);
   transform: translateY(-2px);
 }
 
@@ -445,6 +451,7 @@ button {
 
 .btn:active {
   transform: scale(0.97);
+  transition-duration: var(--press);
 }
 
 /* ------------------------------------------------------------
@@ -474,6 +481,12 @@ button {
 .work-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* O card é um botão: precisa reagir no aperto, não só no hover */
+.work-card:active {
+  transform: translateY(-1px) scale(0.985);
+  transition-duration: var(--press);
 }
 
 .work-card__media {
@@ -541,14 +554,14 @@ button {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.72); /* 0.55 ficava abaixo do mínimo legível */
 }
 
 .work-card__title {
   font-size: 0.84rem;
   font-weight: 600;
   line-height: 1.3;
-  letter-spacing: -0.01em;
+  letter-spacing: 0; /* texto pequeno não leva tracking negativo */
   color: #fff;
 }
 
@@ -574,8 +587,12 @@ button {
   color: #fff;
   background: rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  opacity: 0;
-  transition: all var(--speed) var(--ease);
+  /* Visível por padrão: em telas de toque não existe hover, e sem ele
+     o card perdia o único sinal de que é um vídeo. */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity var(--speed) var(--ease), transform var(--speed) var(--ease),
+    background var(--speed) var(--ease), border-color var(--speed) var(--ease);
 }
 
 .work-card__play svg {
@@ -583,11 +600,19 @@ button {
   height: 18px;
 }
 
-.work-card:hover .work-card__play {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  background: var(--accent);
-  border-color: transparent;
+/* Onde há cursor, o play só aparece no hover, para não poluir a grade */
+@media (hover: hover) {
+  .work-card__play {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  .work-card:hover .work-card__play {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    background: var(--accent);
+    border-color: transparent;
+  }
 }
 
 .work-card--wide .work-card__play {
@@ -683,6 +708,24 @@ button {
   from { opacity: 0; transform: translateY(28px) scale(0.97); }
 }
 
+/* Saída pelo mesmo caminho da entrada: desce e encolhe de volta.
+   Antes o modal sumia de uma vez, o que quebrava a relação espacial. */
+.modal.is-closing .modal__box {
+  animation: sink 220ms var(--ease) forwards;
+}
+
+.modal.is-closing .modal__backdrop {
+  animation: unfade 220ms var(--ease) forwards;
+}
+
+@keyframes sink {
+  to { opacity: 0; transform: translateY(22px) scale(0.975); }
+}
+
+@keyframes unfade {
+  to { opacity: 0; }
+}
+
 .modal__player {
   position: relative;
   aspect-ratio: 16 / 9;
@@ -716,7 +759,9 @@ button {
   color: var(--text);
   background: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all var(--speed) var(--ease);
+  /* Propriedades explícitas em vez de "all": só transform e opacity
+     rodam no compositor, e "all" ainda pegava layout sem necessidade. */
+  transition: transform var(--speed) var(--ease), background var(--speed) var(--ease);
 }
 
 .modal__close svg {
@@ -727,6 +772,11 @@ button {
 .modal__close:hover {
   background: rgba(255, 255, 255, 0.16);
   transform: scale(1.06);
+}
+
+.modal__close:active {
+  transform: scale(0.94);
+  transition-duration: var(--press);
 }
 
 .modal__foot {
@@ -816,6 +866,74 @@ body.modal-open {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   13b. TRANSPARÊNCIA REDUZIDA
+   Quem liga isso no sistema não quer o desfoque: as superfícies
+   viram sólidas em vez de sumirem junto com o efeito.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .modal__box,
+  .toast {
+    background: #15131c;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .modal__backdrop {
+    background: rgba(0, 0, 0, 0.94);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .identity {
+    background: #15131c;
+  }
+
+  .bg::after {
+    display: none; /* o grão vira ruído sem função aqui */
+  }
+}
+
+/* ------------------------------------------------------------
+   13c. CONTRASTE ALTO
+   Fundos quase sólidos, bordas definidas e texto sem meio-tom.
+   ------------------------------------------------------------ */
+@media (prefers-contrast: more) {
+  :root {
+    --text-2: rgba(255, 255, 255, 0.88);
+    --text-3: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --hairline: rgba(255, 255, 255, 0.35);
+  }
+
+  .glass,
+  .modal__box,
+  .toast,
+  .identity {
+    background: #0d0b14;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .hero__title-lead {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .work-card__cat {
+    color: #fff;
+  }
+
+  /* Véu mais forte para o texto sobreposto nunca disputar com a imagem */
+  .work-card__media::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.94), rgba(0, 0, 0, 0.4) 46%, transparent 70%);
+  }
+
+  .bg__beam,
+  .bg__orb {
+    display: none;
   }
 }
 
