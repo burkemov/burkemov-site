@@ -127,7 +127,7 @@ const PROJECTS = [
    navegador que já guardou a versão antiga continuaria mostrando ela.
    Este sufixo muda a URL e força o download da nova.
    >>> Suba este número toda vez que substituir uma capa. <<< */
-const ASSET_VERSION = "4";
+const ASSET_VERSION = "5";
 
 // Triângulo centrado no viewBox (bbox 7→18) com o leve empurrão à
 // direita que todo botão de play precisa para parecer centralizado.

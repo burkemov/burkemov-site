@@ -287,8 +287,14 @@ button {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* A luz quente da paleta cai no fim da linha, como na referência */
+/* A luz quente da paleta cai no fim da linha, como na referência.
+   O padding existe porque o degradê é recortado no texto: com a
+   entrelinha apertada, a perna do "g" descia além da caixa e ficava
+   sem pintura, parecendo cortada. A margem negativa devolve o espaço
+   para o layout não mudar. */
 .hero__title-key {
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
   background: linear-gradient(180deg, #ffffff 46%, #f9a278 100%);
   -webkit-background-clip: text;
   background-clip: text;
